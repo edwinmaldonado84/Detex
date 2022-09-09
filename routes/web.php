@@ -22,5 +22,5 @@ Route::middleware([
         return view('welcome');
     });
     // Route::get('/{any}', App\Http\Controllers\SinglePageController::class . '@central')->where('any', '.*');
-    Route::get('/{any}', 'SpaController@central')->where('any', '.*');
+    // Route::get('/{any}', 'SpaController@central')->where('any', '.*');
 });
