@@ -14,9 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::get('login', function () {
-    return "Api";
-});
+/* Route::middleware('auth:api')->get('login', function (Request $request) {
+    return "LoginTest";
+}); */
+
+Route::post('/login', [App\Http\Controllers\Api\Auth\LoginController::class, 'store']);
+
+
+/* Route::apiResources([
+    'photos' => PhotoController::class,
+    'posts' => PostController::class,
+]); */

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Laravel\Passport\ClientRepository;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,11 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $client = new ClientRepository();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        //Check Before PROD: REDIRECT
+        $client->createPasswordGrantClient(null, 'Default password grant client', 'http://detext.test');
+        $client->createPersonalAccessClient(null, 'Default Personal Access Client', 'http://detext.test');
+        $this->call([
+            UserSeeder::class,
+        ]);
     }
 }

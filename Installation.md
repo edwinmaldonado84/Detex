@@ -8,13 +8,11 @@
 # Laravel-Passport
 
 1.  composer create-project laravel/laravel rodecycle 8.\*
-2.  composer require stancl/tenancy
-3.  php artisan tenancy:install
-4.  php artisan migrate
-5.  composer require laravel/passport
-6.  php artisan passport:keys
-7.  php artisan migrate
-8.  php artisan tenants:migrate
+2.  composer require laravel/passport
+3.  php artisan migrate
+4.  php artisan passport:install
+5.  php artisan passport:keys
+6.  php artisan passport:client --personal (or create from seeder database)
 
 # Spatie permitions
 
@@ -71,3 +69,10 @@ php artisan queue:retry 53006d44-b66e-4c58-9690-6c4c6f69750d
 
 config/mail.php
 config/services.php
+
+Personal access client created successfully.
+Client ID: 9739ab1e-455f-4d31-a0e0-bf787d66f6ea
+Client secret: dPww6WjGNbVqX61qp1BlYhjZlGnMy3taln1XWPjZ
+Password grant client created successfully.
+Client ID: 9739ab1e-5879-43ee-a0b3-bd978cac0f40
+Client secret: MTOOoUtBb8245ZHO74LClbdKsn1udUKnGtnpxneU
