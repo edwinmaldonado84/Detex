@@ -30,6 +30,7 @@ Route::group(['middleware' =>  'auth.key:api'], function () {
 
 
 
+
 /* Route::apiResources([
     'photos' => PhotoController::class,
     'posts' => PostController::class,
