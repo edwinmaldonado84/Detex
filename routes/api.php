@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', [App\Http\Controllers\Api\Auth\LoginController::class, 'store']);
 
-Route::group(['middleware' =>  'auth:api'], function () {
+Route::group(['middleware' =>  'auth.key:api'], function () {
     Route::group(['prefix' => ''], function () {
         Route::get('profile', App\Http\Controllers\Api\Auth\ProfilesController::class . '@index');
         Route::post('logout', App\Http\Controllers\Api\Auth\LogoutController::class . '@store');

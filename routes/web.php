@@ -13,10 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('login', function () {
-    return "Web";
+Route::middleware([
+    'web',
+])->group(function () {
+
+    Route::get('/', function () {
+        return view('welcome');
+    });
+    // Route::get('/{any}', App\Http\Controllers\SinglePageController::class . '@central')->where('any', '.*');
+    Route::get('/{any}', 'SpaController@central')->where('any', '.*');
 });
