@@ -78,7 +78,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const store = useStore();
 const $q = useQuasar();
-const logo = ref(logoData["Keytronic"]);
+const logo = ref(logoData["Digitalizer"]);
 const vivus = ref("");
 const email = ref("edwin.maldonado84@gmail.com");
 const password = ref("apple123");
