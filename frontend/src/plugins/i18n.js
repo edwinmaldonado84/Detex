@@ -5,7 +5,7 @@ import helpers from "@/helpers";
 const i18n = createI18n({
     locale: helpers.getLanguageBrowser(),
     fallbackLocale: "es",
-    legacy: false,
+    legacy: true,
     globalInjection: true,
     messages,
 });

@@ -1,5 +1,8 @@
 {
     "home": "Home",
     "dashboard": "Dashboard",
-    "language": "Language"
+    "language": "Language",
+    "error":{
+        "required": "Required."
+    }
 }

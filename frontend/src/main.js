@@ -8,6 +8,7 @@ import router from "@/router";
 import helpers from "@/helpers";
 import store from "@/store";
 import i18n from "@/plugins/i18n";
+import inputRules from "@/validations/inputsRules";
 
 import "@/plugins";
 import "@/scss/main.scss";
@@ -28,11 +29,10 @@ const app = createApp(App)
     .use(router)
     .use(createMetaManager())
     .use(i18n)
-    // .use(workerService)
+    .use(inputRules)
     .use(store);
 //   .use(VueAxios, axios)
 //   .use(createMetaManager());
 
 app.provide("$helpers", helpers);
-// app.provide("$workerService", workerService);
 app.mount("#app");

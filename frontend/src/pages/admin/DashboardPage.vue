@@ -7,6 +7,12 @@
             <q-card class="my-card">
                 <q-card-section v-text="format.capitalize($t('dashboard'))" />
                 <q-card-section v-text="format.humanStorageSize(13087)" />
+                <!-- <q-card-section v-text="$rules.required" /> -->
+                <q-input
+                    v-model="text"
+                    label="Standard"
+                    :rules="[$rules.required]"
+                />
             </q-card>
         </div>
     </q-page>
