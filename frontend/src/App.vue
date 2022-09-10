@@ -2,7 +2,11 @@
     <div>
         <metainfo>
             <template v-slot:title="{ content }">
-                {{ content ? `${content} | ${siteName}` : siteName }}
+                {{
+                    content
+                        ? `${content} | ${defaultSettings.companyName}`
+                        : defaultSettings.companyName
+                }}
             </template>
         </metainfo>
         <component :is="layout">
@@ -13,13 +17,15 @@
 
 <script setup>
 import PublicLayout from "@/layouts/PublicLayout.vue";
-
 import { useMeta } from "vue-meta";
-import { computed } from "vue";
+import { computed, inject } from "vue";
 import { useRoute } from "vue-router";
+import workerService from "@/services/workerService";
+import defaultSettings from "@/services/settings";
 
 const route = useRoute();
-const siteName = "Detex";
+
+workerService();
 
 useMeta({
     title: "",

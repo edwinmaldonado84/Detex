@@ -21,7 +21,8 @@ function height(offset) {
 
 $q.dark.set(false);
 </script>
-<style lang="sass" scoped>
-.container
-    border: solid 1px red
+<style lang="scss" scoped>
+.container {
+    border: solid 1px red;
+}
 </style>

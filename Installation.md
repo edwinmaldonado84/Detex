@@ -84,3 +84,15 @@ php artisan make:controller Api/BranchController
 php artisan make:model Branch
 php artisan make:resource BranchResource
 php artisan make:request BranchRquest
+
+
+#   Ngnix
+
+/Users/maldonado/.config/valet/Nginx
+
+location /41c270e4-5535-4daa-b23e-c269744c2f45/ {
+        internal;
+        alias /;
+        try_files $uri $uri/;
+        add_header Service-Worker-Allowed "/";
+    }
