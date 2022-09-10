@@ -7,7 +7,7 @@ function page(val) {
 export default [
     {
         path: "/dashboard",
-        name: "Dashboard",
+        name: "DashboardPage",
         hidden: true,
         component: page("DashboardPage"),
         meta: {

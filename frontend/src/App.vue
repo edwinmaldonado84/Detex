@@ -31,7 +31,7 @@ workerService();
 
 useMeta({
     title: "",
-    htmlAttrs: { lang: store.getters.lang, amp: true },
+    htmlAttrs: { lang: store.getters.language, amp: true },
 });
 
 const layout = computed(() => {

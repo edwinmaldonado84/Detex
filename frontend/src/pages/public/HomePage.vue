@@ -67,17 +67,21 @@
     </q-page>
 </template>
 <script setup>
-import { computed, ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import { useQuasar, QSpinnerGears, QSpinnerIos } from "quasar";
 import logoData from "./logoData";
 import Vivus from "vivus";
 import { useMeta } from "vue-meta";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
+const router = useRouter();
+const store = useStore();
 const $q = useQuasar();
 const logo = ref(logoData["Keytronic"]);
 const vivus = ref("");
-const email = ref("");
-const password = ref("");
+const email = ref("edwin.maldonado84@gmail.com");
+const password = ref("apple123");
 const Form = ref(null);
 let timer;
 
@@ -104,12 +108,30 @@ onMounted(() => {
 });
 
 const login = async () => {
-    Form.value.validate().then((success) => {
+    Form.value.validate().then(async (success) => {
         if (success) {
             $q.loading.show({
                 spinner: QSpinnerIos,
                 message: "Validado las credenciales...",
             });
+
+            const { data } = await axios
+                .post("/api/login", {
+                    email: email.value,
+                    password: password.value,
+                })
+                .catch(function (error) {
+                    $q.loading.hide();
+                });
+
+            // Save the token.
+            store.dispatch("auth/setToken", {
+                token: data.data.token,
+            });
+
+            await store.dispatch("auth/fetchUser");
+
+            router.push({ name: "DashboardPage" });
 
             timer = setTimeout(() => {
                 $q.loading.show({

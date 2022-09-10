@@ -2,10 +2,11 @@
     "home": "Home",
     "dashboard": "Dashboard",
     "language": "Language",
-    "error":{
+    "errors":{
         "required": "Required.",
         "invalid_email": "Invalid Email",
-        "min_password": "It should contain at least 8 characters"
+        "min_password": "It should contain at least 8 characters",
+        "something_is_wrong":"Something is wrong!"
     },
     "inputs":{
         "email": "E-mail",

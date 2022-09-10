@@ -11,6 +11,7 @@
   "dependencies": {
     "@intlify/vite-plugin-vue-i18n": "^6.0.1",
     "@quasar/extras": "^1.15.3",
+    "axios": "^0.27.2",
     "nprogress": "^0.2.0",
     "postcss": "^8.4.16",
     "quasar": "^2.7.7",
@@ -19,6 +20,7 @@
     "vite-plugin-pwa": "^0.12.7",
     "vivus": "^0.4.6",
     "vue": "^3.2.37",
+    "vue-axios": "^3.4.1",
     "vue-i18n": "^9.2.2",
     "vue-meta": "^3.0.0-alpha.10",
     "vue-router": "4",
