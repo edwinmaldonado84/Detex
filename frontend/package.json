@@ -17,6 +17,7 @@
     "sweetalert2": "^11.4.32",
     "unplugin-vue-components": "^0.22.4",
     "vite-plugin-pwa": "^0.12.7",
+    "vivus": "^0.4.6",
     "vue": "^3.2.37",
     "vue-i18n": "^9.2.2",
     "vue-meta": "^3.0.0-alpha.10",

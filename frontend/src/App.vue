@@ -22,14 +22,16 @@ import { computed, inject } from "vue";
 import { useRoute } from "vue-router";
 import workerService from "@/services/workerService";
 import defaultSettings from "@/services/settings";
+import { useStore } from "vuex";
 
 const route = useRoute();
+const store = useStore();
 
 workerService();
 
 useMeta({
     title: "",
-    htmlAttrs: { lang: "es", amp: true },
+    htmlAttrs: { lang: store.getters.lang, amp: true },
 });
 
 const layout = computed(() => {

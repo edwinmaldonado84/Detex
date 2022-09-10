@@ -3,6 +3,15 @@
     "dashboard": "Dashboard",
     "language": "Language",
     "error":{
-        "required": "Required."
+        "required": "Required.",
+        "invalid_email": "Invalid Email",
+        "min_password": "It should contain at least 8 characters"
+    },
+    "inputs":{
+        "email": "E-mail",
+        "password": "Password"
+    },
+    "buttons":{
+        "login": "Login"
     }
 }

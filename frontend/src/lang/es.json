@@ -3,6 +3,16 @@
     "dashboard": "Dashboard",
     "language": "Idioma",
     "error":{
-        "required": "Requerido."
+        "required": "Requerido.",
+        "invalid_email": "Correo electronico invalido.",
+        "min_password": "Deberia contener almenos 8 caracteres."
+
+    },
+    "inputs":{
+        "email": "Correo electrónico",
+        "password": "Contraseña"
+    },
+    "buttons":{
+        "login": "Ingresar"
     }
 }
