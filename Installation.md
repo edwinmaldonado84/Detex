@@ -76,3 +76,11 @@ Client secret: dPww6WjGNbVqX61qp1BlYhjZlGnMy3taln1XWPjZ
 Password grant client created successfully.
 Client ID: 9739ab1e-5879-43ee-a0b3-bd978cac0f40
 Client secret: MTOOoUtBb8245ZHO74LClbdKsn1udUKnGtnpxneU
+
+
+## Create modules
+php artisan make:migration create_branches_table
+php artisan make:controller Api/BranchController
+php artisan make:model Branch
+php artisan make:resource BranchResource
+php artisan make:request BranchRquest

@@ -5,30 +5,30 @@ namespace App\Http\Controllers\Api;
 use App\Traits\ApiResponse;
 use App\Exceptions\InvalidException;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CompanyRequest;
-use App\Repositories\CompanyRepository;
+use App\Http\Requests\BranchRequest;
+use App\Repositories\BranchRepository;
 
-class CompanyController extends Controller
+class BranchController extends Controller
 {
     use ApiResponse;
-    private $companyRepository;
+    private $branchRepository;
 
-    public function __construct(CompanyRepository $companyRepository)
+    public function __construct(BranchRepository $branchRepository)
     {
-        $this->companyRepository = $companyRepository;
+        $this->branchRepository = $branchRepository;
     }
 
-    public function index(CompanyRequest $request)
+    public function index(BranchRequest $request)
     {
 
-        $list = $this->companyRepository->list($request->all());
+        $list = $this->branchRepository->list($request->all());
 
         return $this->successResponse($list, 'List', 200);
     }
 
-    public function store(CompanyRequest $request)
+    public function store(BranchRequest $request)
     {
-        $create = $this->companyRepository->create($request->all());
+        $create = $this->branchRepository->create($request->all());
 
         if (!$create) throw InvalidException::forInvalid("Falló al Crear");
 
@@ -36,9 +36,9 @@ class CompanyController extends Controller
     }
 
 
-    public function show(CompanyRequest $request, $id)
+    public function show(BranchRequest $request, $id)
     {
-        $search = $this->companyRepository->find($id);
+        $search = $this->branchRepository->find($id);
 
         if (!$search) throw InvalidException::forInvalid("No se encontro.");
 
@@ -46,12 +46,12 @@ class CompanyController extends Controller
     }
 
 
-    public function update(CompanyRequest $request, $id)
+    public function update(BranchRequest $request, $id)
     {
 
         $payload = $request->all();
 
-        $updated = $this->companyRepository->update($id, $payload);
+        $updated = $this->branchRepository->update($id, $payload);
 
         if (!$updated) throw InvalidException::forInvalid("Falló al Actualizar");
 
@@ -59,11 +59,11 @@ class CompanyController extends Controller
     }
 
 
-    public function destroy(CompanyRequest $request, $id)
+    public function destroy(BranchRequest $request, $id)
     {
 
         try {
-            $this->companyRepository->delete($id);
+            $this->branchRepository->delete($id);
         } catch (\Exception $e) {
             throw InvalidException::forInvalid("No se puede eliminar la clase, hasta que elimine a todos los clientes de la lista de asistencia.");
         }

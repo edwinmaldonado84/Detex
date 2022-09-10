@@ -72,7 +72,7 @@ class CompanyRequest extends FormRequest
     {
         return [
             'name.required' => 'El :attribute es obligatorio.',
-            'name.unique' => 'El :attribute ya ha sido usado.',
+            'name.unique' => 'La :attribute ya existe.',
         ];
     }
 
@@ -80,7 +80,7 @@ class CompanyRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'Nombre de la compania',
+            'name' => 'Compania',
         ];
     }
 

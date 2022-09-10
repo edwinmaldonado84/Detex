@@ -25,15 +25,16 @@ Route::group(['middleware' =>  'auth.key:api'], function () {
         Route::get('profile', App\Http\Controllers\Api\Auth\ProfilesController::class . '@index');
         Route::post('logout', App\Http\Controllers\Api\Auth\LogoutController::class . '@store');
 
-        Route::apiResource('company', App\Http\Controllers\Api\CompanyController::class);
+        // Route::apiResource('company', App\Http\Controllers\Api\CompanyController::class);
     });
 });
 
-/* Route::group(['middleware' => [
+Route::group(['middleware' => [
     'auth.key:api', 'role:SuperAdmin|Admin'
 ]], function () {
-    Route::apiResource('companies', App\Http\Controllers\Api\CompanyController::class);
-}); */
+    Route::apiResource('company', App\Http\Controllers\Api\CompanyController::class);
+    Route::apiResource('branch', App\Http\Controllers\Api\BranchController::class);
+});
 
 
 
