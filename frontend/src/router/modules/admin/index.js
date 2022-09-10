@@ -14,6 +14,7 @@ export default [
             title: "Dashboard",
             noCache: true,
             layout: AdminLayout,
+            middleware: "auth",
         },
     },
 ];

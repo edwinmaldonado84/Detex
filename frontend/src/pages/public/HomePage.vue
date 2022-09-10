@@ -131,8 +131,6 @@ const login = async () => {
 
             await store.dispatch("auth/fetchUser");
 
-            router.push({ name: "DashboardPage" });
-
             timer = setTimeout(() => {
                 $q.loading.show({
                     spinner: QSpinnerGears,
@@ -145,8 +143,9 @@ const login = async () => {
                 timer = setTimeout(() => {
                     $q.loading.hide();
                     timer = void 0;
-                }, 2000);
-            }, 2000);
+                    router.push({ name: "DashboardPage" });
+                }, 1000);
+            }, 1000);
         } else {
             $q.notify({
                 color: "green-4",

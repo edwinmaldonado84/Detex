@@ -38,7 +38,7 @@ export const constantRoutes = Object.keys(contextPublic)
 
 // Load admin routes dynamically.
 
-const contextAdmin = import.meta.glob("./admin/*.js", {
+/* const contextAdmin = import.meta.glob("./admin/*.js", {
     eager: true,
 });
 
@@ -48,6 +48,18 @@ export const asyncRoutes = Object.keys(contextAdmin)
         name = name.replace(/(^.\/)|(\.js$)/g, "");
 
         return [name, contextAdmin[path].default];
+    })
+    .reduce((modules, [, module]) => {
+        return [...modules, ...module];
+    }, []); */
+
+const adminList = import.meta.glob("./admin/*.js", {
+    eager: true,
+});
+
+export const asyncRoutes = Object.keys(adminList)
+    .map((value) => {
+        return [value, adminList[value].default];
     })
     .reduce((modules, [, module]) => {
         return [...modules, ...module];
