@@ -2,16 +2,27 @@
     <div class="q-px-md">
         <q-layout view="lHh Lpr lFf" container style="height: 88vh">
             <div class="q-pa-md">
-                <div class="q-gutter-x-xs q-gutter-y-lg">
+                <div class="q-gutter-sm">
                     <div class="full-width row wrap justify-evenly">
-                        <q-card class="col col-4">
+                        <q-card class="col col-5 q-my-lg">
                             <chart-bar />
                         </q-card>
-                        <q-card class="col col-3">
+                        <q-card class="col col-5 q-my-lg">
+                            <chart-line />
+                        </q-card>
+                        <q-card class="col col-4 q-my-lg">
                             <chart-doughnut />
                         </q-card>
-                        <q-card class="col col-4">
-                            <chart-line />
+
+                        <q-card class="col col-6 q-my-lg">
+                            <chart-bar2 />
+                        </q-card>
+
+                        <q-card class="col col-5 q-my-lg">
+                            <chart-polar-area />
+                        </q-card>
+                        <q-card class="col col-5 q-my-lg">
+                            <chart-radar />
                         </q-card>
                     </div>
                 </div>
