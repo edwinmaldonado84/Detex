@@ -19,8 +19,8 @@ class ProfileResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
-            /*  'role' => $this->getRoleNames()->first(),
-            'permissions' => $this->getPermissionsViaRoles()->pluck('name'), */
+            'role' => $this->getRoleNames()->first(),
+            'permissions' => $this->getPermissionsViaRoles()->pluck('name'),
         ];
     }
 }
