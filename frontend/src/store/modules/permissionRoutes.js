@@ -31,11 +31,6 @@ export function filterAsyncRoutes(routes, permissions) {
     const res = [];
     routes.forEach((route) => {
         const tmp = { ...route };
-        console.log(
-            "🚀 ~ file: permissionRoutes.js ~ line 34 ~ routes.forEach ~ route",
-            route
-        );
-
         if (hasPermission(permissions, tmp)) {
             if (tmp.children) {
                 tmp.children = filterAsyncRoutes(tmp.children, permissions);

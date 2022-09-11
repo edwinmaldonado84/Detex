@@ -32,12 +32,16 @@
         </q-drawer>
 
         <q-page-container>
+            <div v-if="tagsViewShow" class="tagsView">
+                <DeTagsView />
+            </div>
             <slot> </slot>
         </q-page-container>
     </q-layout>
 </template>
 
 <script setup>
+import DeTagsView from "./components/DeTagsView.vue";
 import DeDrawerMenu from "./components/DeDrawerMenu.vue";
 import { ref, onBeforeMount } from "vue";
 import { useStore } from "vuex";
@@ -46,6 +50,7 @@ const store = useStore();
 const drawer = ref(false);
 const miniEffect = ref(false);
 const miniState = ref(false);
+const tagsViewShow = ref(true);
 
 function toggleDrawer() {
     switch (true) {

@@ -7,10 +7,15 @@ function page(val) {
 
 export default [
     {
+        path: "/redirect/:id",
+        hidden: true,
+        component: () => import(`../../../pages/redirect/RedirectPage.vue`),
+    },
+    {
         path: "/dashboard",
         name: "DashboardPage",
         hidden: false,
-        component: page("DashboardPage"),
+        component: () => import(`../../../pages/admin/DashboardPage.vue`),
         meta: {
             title: "Dashboard",
             noCache: true,
@@ -33,7 +38,20 @@ export default [
             layout: AdminLayout,
             middleware: "auth",
             icon: "apartment",
-            affix: true,
+            separator: true,
+        },
+    },
+    {
+        path: "/users",
+        name: "UsersPage",
+        hidden: false,
+        component: () => import(`../../../pages/admin/users/UsersPage.vue`),
+        meta: {
+            title: "Users",
+            noCache: true,
+            layout: AdminLayout,
+            middleware: "auth",
+            icon: "group",
             separator: true,
         },
     },

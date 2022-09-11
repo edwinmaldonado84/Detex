@@ -9,6 +9,10 @@ const getters = {
     permission_routes: (state) => state.permissionRoutes.routes,
     permissions: (state) => state.auth.permissions,
 
+    cachedViews: (state) => state.tagsView.cachedViews,
+    // tagsViewShow: (state) => state.settings.tagsView,
+    visitedViews: (state) => state.tagsView.visitedViews,
+
     /* btnInterestColor: (state) => state.settings.btn_interest_color,
     cachedViews: (state) => state.tagsView.cachedViews,
     check: (state) => state.auth.user !== null,
