@@ -22,6 +22,11 @@
 import { format, useQuasar, QSpinnerGears } from "quasar";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import { useMeta } from "vue-meta";
+
+useMeta({
+    title: "Dasboard",
+});
 
 const store = useStore();
 const $q = useQuasar();
@@ -43,7 +48,7 @@ const logout = async () => {
     setTimeout(() => {
         $q.loading.hide();
         router.push({ name: "Home" });
-    }, 1000);
+    }, 700);
 };
 </script>
 <style lang="scss" scoped>

@@ -144,8 +144,8 @@ const login = async () => {
                     $q.loading.hide();
                     timer = void 0;
                     router.push({ name: "DashboardPage" });
-                }, 1000);
-            }, 1000);
+                }, 700);
+            }, 700);
         } else {
             $q.notify({
                 color: "green-4",
