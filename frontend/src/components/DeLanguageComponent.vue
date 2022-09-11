@@ -1,15 +1,27 @@
 <template>
-    <q-select
-        v-model="locale"
-        :options="$i18n.availableLocales"
-        :label="$t('language')"
-        dense
-        borderless
-        emit-value
-        map-options
-        options-dense
-        style="min-width: 100px"
-    />
+    <q-avatar class="q-mx-lg">
+        <q-icon size="md" :class="'flag_' + store.getters.language" />
+        <q-menu :offset="[30, 5]">
+            <q-list
+                v-for="item in $i18n.availableLocales"
+                style="min-width: 100px"
+            >
+                <q-item
+                    clickable
+                    v-close-popup
+                    class="row items-center"
+                    @click="locale = item"
+                >
+                    <q-icon :class="'flag_' + item" size="sm" />
+                    <q-item-section
+                        class="q-pl-md text-h6 text-capitalize"
+                        v-text="item"
+                    />
+                </q-item>
+                <q-separator />
+            </q-list>
+        </q-menu>
+    </q-avatar>
 </template>
 
 <script setup>
@@ -31,3 +43,12 @@ watch(locale, (value) => {
     store.dispatch("lang/setLanguage", value);
 });
 </script>
+<style lang="scss" scoped>
+.flag_en {
+    background: url("@/assets/img/flags/usa.png") no-repeat center center / 100%;
+}
+.flag_es {
+    background: url("@/assets/img/flags/mexico.png") no-repeat center center /
+        100%;
+}
+</style>
