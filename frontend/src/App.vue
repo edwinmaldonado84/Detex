@@ -9,9 +9,7 @@
                 }}
             </template>
         </metainfo>
-        <component :is="layout">
-            <router-view />
-        </component>
+        <component :is="layout" v-if="layout" />
     </div>
 </template>
 

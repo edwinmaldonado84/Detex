@@ -30,7 +30,7 @@ export default [
             import("../../../pages/admin/companies/CompaniesPage.vue"),
         meta: {
             title: "Companies",
-            noCache: true,
+            noCache: false,
             layout: AdminLayout,
             middleware: "auth",
             icon: "apartment",

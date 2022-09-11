@@ -16,7 +16,9 @@
 
 <script setup>
 import { useMeta } from "vue-meta";
+import { ref } from "vue";
 
+const email = ref(null);
 useMeta({
     title: "Companies",
 });

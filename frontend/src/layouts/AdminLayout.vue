@@ -36,7 +36,11 @@
             <div v-if="tagsViewShow" class="tagsView">
                 <DeTagsView />
             </div>
-            <slot> </slot>
+            <router-view v-slot="{ Component }">
+                <keep-alive :include="cachedViews">
+                    <component :is="Component" />
+                </keep-alive>
+            </router-view>
         </q-page-container>
     </q-layout>
 </template>
@@ -45,14 +49,20 @@
 import DeProfileComponent from "./components/DeProfileComponent.vue";
 import DeTagsView from "./components/DeTagsView.vue";
 import DeDrawerMenu from "./components/DeDrawerMenu.vue";
-import { ref, onBeforeMount } from "vue";
+import { ref, onBeforeMount, computed } from "vue";
 import { useStore } from "vuex";
+import { useRoute } from "vue-router";
 
 const store = useStore();
+const route = useRoute();
 const drawer = ref(false);
 const miniEffect = ref(false);
 const miniState = ref(false);
 const tagsViewShow = ref(true);
+
+const cachedViews = computed(() => {
+    return store.getters.cachedViews;
+});
 
 function toggleDrawer() {
     switch (true) {
