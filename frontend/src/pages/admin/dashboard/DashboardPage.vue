@@ -1,22 +1,23 @@
 <template>
-    <q-page class="container text-center row justify-center items-center">
-        <div class="q-pa-xl">
-            <q-card class="my-card">
-                <q-card-section v-text="format.capitalize($t('dashboard'))" />
-                <q-card-section v-text="format.humanStorageSize(13087)" />
-                <!-- <q-card-section v-text="$rules.required" /> -->
-                <q-input label="Standard" :rules="[$rules.required]" />
-                <q-btn
-                    outline
-                    color="primary"
-                    size="lg"
-                    class="full-width text-capitalize"
-                    :label="$t('buttons.login')"
-                    @click="logout"
-                />
-            </q-card>
-        </div>
-    </q-page>
+    <div class="q-px-md">
+        <q-layout view="lHh Lpr lFf" container style="height: 88vh">
+            <div class="q-pa-md">
+                <div class="q-gutter-x-xs q-gutter-y-lg">
+                    <div class="full-width row wrap justify-evenly">
+                        <q-card class="col col-4">
+                            <chart-bar />
+                        </q-card>
+                        <q-card class="col col-3">
+                            <chart-doughnut />
+                        </q-card>
+                        <q-card class="col col-4">
+                            <chart-line />
+                        </q-card>
+                    </div>
+                </div>
+            </div>
+        </q-layout>
+    </div>
 </template>
 <script setup>
 import { format, useQuasar, QSpinnerGears } from "quasar";

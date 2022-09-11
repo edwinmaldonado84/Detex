@@ -1,5 +1,5 @@
 <template>
-    <div ref="rootRef">
+    <div ref="rootRef" class="q-pa-sm">
         <q-chip
             v-for="(tag, i) in visitedViews"
             ref="tagRef"
