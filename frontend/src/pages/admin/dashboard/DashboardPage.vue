@@ -59,12 +59,7 @@ const logout = async () => {
     });
     setTimeout(() => {
         $q.loading.hide();
-        router.push({ name: "Home" });
+        router.push({ name: "AuthPage" });
     }, 700);
 };
 </script>
-<style lang="scss" scoped>
-.container {
-    border: solid 1px red;
-}
-</style>

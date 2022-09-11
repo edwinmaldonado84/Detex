@@ -13,6 +13,7 @@
                     Detex
                 </q-toolbar-title>
                 <DeLanguageComponent />
+                <DeProfileComponent />
             </q-toolbar>
         </q-header>
 
@@ -41,6 +42,7 @@
 </template>
 
 <script setup>
+import DeProfileComponent from "./components/DeProfileComponent.vue";
 import DeTagsView from "./components/DeTagsView.vue";
 import DeDrawerMenu from "./components/DeDrawerMenu.vue";
 import { ref, onBeforeMount } from "vue";

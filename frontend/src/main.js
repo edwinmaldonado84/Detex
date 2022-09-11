@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import { createMetaManager } from "vue-meta";
 import App from "./App.vue";
-import { Quasar, Notify, Loading } from "quasar";
+import { Quasar, Notify, Loading, Dialog } from "quasar";
 import quasarLang from "quasar/lang/es";
 import quasarIconSet from "quasar/icon-set/svg-material-icons";
 import router from "@/router";
@@ -18,6 +18,7 @@ const app = createApp(App)
         plugins: {
             Notify,
             Loading,
+            Dialog,
         }, // import Quasar plugins and add here
         lang: quasarLang,
         iconSet: quasarIconSet,

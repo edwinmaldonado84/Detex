@@ -1,13 +1,10 @@
-function page(val) {
-    return () => import(`../../../pages/error/${val}.vue`).then((m) => m);
-}
-
 export default [
     {
         path: "/403",
         name: "Forbidden",
         hidden: true,
-        component: page("403"),
+        component: () => import("../../../pages/error/403.vue"),
+
         meta: {
             title: "Forbidden",
             error: true,
@@ -18,7 +15,7 @@ export default [
         path: "/404",
         name: "NotFound",
         hidden: true,
-        component: page("404"),
+        component: () => import("../../../pages/error/404.vue"),
         meta: {
             title: "Not Found",
             error: true,
@@ -26,22 +23,10 @@ export default [
         },
     },
     {
-        path: "/redirect/:url",
-        name: "Redirect",
-        hidden: true,
-        component: page("Redirect"),
-        props: (route) => ({ url: route.params.url }),
-        meta: {
-            title: "Redirect",
-            error: false,
-            noCache: true,
-        },
-    },
-    {
         path: "/:pathMatch(.*)*",
         hidden: true,
         name: "NoFound",
-        component: page("404"),
+        component: () => import("../../../pages/error/404.vue"),
         meta: {
             title: "Not Found",
         },

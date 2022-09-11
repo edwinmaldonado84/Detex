@@ -1,12 +1,8 @@
-function page(val) {
-    return () => import(`../../../pages/public/${val}.vue`).then((m) => m);
-}
-
 export default [
     {
         path: "/",
-        name: "Home",
-        component: page("HomePage"),
+        name: "AuthPage",
+        component: () => import("../../../pages/public/AuthPage.vue"),
         hidden: true,
         meta: {
             title: "Home",
