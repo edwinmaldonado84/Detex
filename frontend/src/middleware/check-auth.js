@@ -10,7 +10,7 @@ export default async (to, from, next) => {
         } catch (e) {
             console.log(e);
         }
-        if (to.name === "Home") {
+        if (to.name === "AuthPage") {
             next({ name: "DashboardPage" });
         } else {
             next();

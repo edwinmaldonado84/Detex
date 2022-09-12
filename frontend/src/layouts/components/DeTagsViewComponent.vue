@@ -181,10 +181,6 @@ const isAffix = (tag) => {
 const refreshSelectedTag = async (view) => {
     store.dispatch("tagsView/delCachedView", view).then(async () => {
         const { path } = view;
-        console.log(
-            "🚀 ~ file: DeTagsView.vue ~ line 172 ~ this.$store.dispatch ~ path",
-            path
-        );
         await nextTick(() => {
             router.replace({
                 path: "/redirect" + path,
@@ -201,13 +197,9 @@ const closeOthersTags = () => {
 };
 
 const closeAllTags = (view) => {
-    store.dispatch("tagsView/delAllViews").then(({ visitedViews }) => {
-        if (
-            affixTags.value.some((tag) => tag.path === selectedTag.value.path)
-        ) {
-            return;
-        }
-        toLastView(visitedViews, selectedTag.value);
+    store.dispatch("tagsView/delAllViews");
+    router.replace({
+        path: "/redirect/dashboard",
     });
 };
 </script>

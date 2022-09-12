@@ -9,6 +9,7 @@
                 }}
             </template>
         </metainfo>
+
         <component :is="layout" v-if="layout" />
     </div>
 </template>

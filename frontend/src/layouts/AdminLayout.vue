@@ -29,17 +29,19 @@
             :breakpoint="500"
             class="bg-grey-3"
         >
-            <DeDrawerMenu />
+            <DeDrawerMenuComponent />
         </q-drawer>
 
         <q-page-container>
             <div v-if="tagsViewShow" class="tagsView">
-                <DeTagsView />
+                <DeTagsViewComponent />
             </div>
-            <router-view v-slot="{ Component }">
-                <keep-alive :include="cachedViews">
-                    <component :is="Component" />
-                </keep-alive>
+            <router-view v-slot="{ Component, route }">
+                <q-slide-transition :duration="3000">
+                    <keep-alive :include="cachedViews">
+                        <component :is="Component" :key="route.path" />
+                    </keep-alive>
+                </q-slide-transition>
             </router-view>
         </q-page-container>
     </q-layout>
@@ -47,8 +49,8 @@
 
 <script setup>
 import DeProfileComponent from "./components/DeProfileComponent.vue";
-import DeTagsView from "./components/DeTagsView.vue";
-import DeDrawerMenu from "./components/DeDrawerMenu.vue";
+import DeTagsViewComponent from "./components/DeTagsViewComponent.vue";
+import DeDrawerMenuComponent from "./components/DeDrawerMenuComponent.vue";
 import { ref, onBeforeMount, computed } from "vue";
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
@@ -62,6 +64,10 @@ const tagsViewShow = ref(true);
 
 const cachedViews = computed(() => {
     return store.getters.cachedViews;
+});
+
+const key = computed(() => {
+    return route.path;
 });
 
 function toggleDrawer() {

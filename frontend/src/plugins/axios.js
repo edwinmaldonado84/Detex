@@ -7,7 +7,7 @@ window.axios = axios;
 
 if (process.env.NODE_ENV == "development") {
     //   axios.defaults.baseURL = "https://velkashopping.com";
-    axios.defaults.baseURL = "https://detext.test";
+    axios.defaults.baseURL = "https://detex.test";
     //   axios.defaults.headers.common["Accept-Language"] = lang;
 }
 

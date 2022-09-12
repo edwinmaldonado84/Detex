@@ -44,8 +44,6 @@ const store = useStore();
 const $q = useQuasar();
 const router = useRouter();
 
-$q.dark.set(false);
-
 const logout = async () => {
     $q.loading.show({
         spinner: QSpinnerGears,
