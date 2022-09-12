@@ -13,12 +13,12 @@
                     Detex
                 </q-toolbar-title>
                 <DeLanguageComponent />
+                <DeSettingsComponent />
                 <DeProfileComponent />
             </q-toolbar>
         </q-header>
 
         <q-drawer
-            show-if-above
             v-model="drawer"
             side="left"
             bordered
@@ -33,7 +33,7 @@
         </q-drawer>
 
         <q-page-container>
-            <div v-if="tagsViewShow" class="tagsView">
+            <div v-if="store.getters.tagsViewShow" class="tagsView">
                 <DeTagsViewComponent />
             </div>
             <router-view v-slot="{ Component, route }">
@@ -48,6 +48,7 @@
 </template>
 
 <script setup>
+import DeSettingsComponent from "./components/DeSettingsComponent.vue";
 import DeProfileComponent from "./components/DeProfileComponent.vue";
 import DeTagsViewComponent from "./components/DeTagsViewComponent.vue";
 import DeDrawerMenuComponent from "./components/DeDrawerMenuComponent.vue";
@@ -57,10 +58,7 @@ import { useRoute } from "vue-router";
 
 const store = useStore();
 const route = useRoute();
-const drawer = ref(false);
-const miniEffect = ref(false);
 const miniState = ref(false);
-const tagsViewShow = ref(true);
 
 const cachedViews = computed(() => {
     return store.getters.cachedViews;
@@ -68,6 +66,30 @@ const cachedViews = computed(() => {
 
 const key = computed(() => {
     return route.path;
+});
+
+const drawer = computed({
+    get() {
+        return store.getters.drawer;
+    },
+    set(newValue) {
+        store.dispatch("settings/changeSetting", {
+            key: "drawer",
+            value: newValue,
+        });
+    },
+});
+
+const miniEffect = computed({
+    get() {
+        return store.getters.mini;
+    },
+    set(newValue) {
+        store.dispatch("settings/changeSetting", {
+            key: "mini",
+            value: newValue,
+        });
+    },
 });
 
 function toggleDrawer() {

@@ -1,5 +1,5 @@
 <template>
-    <q-avatar class="q-mx-lg">
+    <q-avatar class="q-mx-sm">
         <q-icon size="md" :class="'flag_' + store.getters.language" />
         <q-menu :offset="[30, 5]">
             <q-list

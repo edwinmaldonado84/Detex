@@ -19,6 +19,7 @@
             @contextmenu.prevent.native="openMenu(tag, $event)"
             :color="isActive(tag) ? 'primary' : ''"
             :text-color="isActive(tag) ? 'white' : ''"
+            class="q-bg--dark-red"
         >
             {{ tag.title }}
             <q-menu v-model="visible" v-if="selectedTag == tag" auto-close>
