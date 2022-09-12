@@ -1,8 +1,10 @@
 <template>
     <q-page
-        class="bg-accent window-height window-width row justify-center items-center"
+        class="window-height window-width row justify-center items-center container"
     >
-        <q-card class="col-10 col-sm-6 col-md-4 col-lg-3 shadow-1">
+        <q-card
+            class="col-10 col-sm-6 col-md-4 col-lg-3 shadow-1 rounded-borders"
+        >
             <q-card-section class="q-pa-none">
                 <div class="flex q-pa-md justify-center bg-blue-10">
                     <svg
@@ -166,7 +168,6 @@ onBeforeUnmount(() => {
 </script>
 <style lang="sass" scoped>
 .container
-    border: solid 1px red
     background-color: rgb(120, 120, 120)
 .form-container
     border: solid 1px gray
