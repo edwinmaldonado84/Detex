@@ -1,6 +1,8 @@
 <template>
-    <q-avatar class="q-mx-sm">
-        <q-icon size="md" :class="'flag_' + store.getters.language" />
+    <div class="q-mx-sm">
+        <q-btn flat round color="white">
+            <q-icon size="md" :class="'flag_' + store.getters.language" />
+        </q-btn>
         <q-menu :offset="[30, 5]">
             <q-list
                 v-for="item in $i18n.availableLocales"
@@ -21,7 +23,7 @@
                 <q-separator />
             </q-list>
         </q-menu>
-    </q-avatar>
+    </div>
 </template>
 
 <script setup>

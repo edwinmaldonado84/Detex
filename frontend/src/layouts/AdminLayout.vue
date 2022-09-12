@@ -12,6 +12,7 @@
                     </q-avatar> -->
                     Detex
                 </q-toolbar-title>
+                <SearchRoutesComponent />
                 <DeLanguageComponent />
                 <DeSettingsComponent />
                 <DeProfileComponent />
@@ -48,6 +49,7 @@
 </template>
 
 <script setup>
+import SearchRoutesComponent from "./components/SearchRoutesComponent.vue";
 import DeSettingsComponent from "./components/DeSettingsComponent.vue";
 import DeProfileComponent from "./components/DeProfileComponent.vue";
 import DeTagsViewComponent from "./components/DeTagsViewComponent.vue";

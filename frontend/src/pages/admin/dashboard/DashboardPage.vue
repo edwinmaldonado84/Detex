@@ -4,24 +4,24 @@
             <div class="q-pa-md">
                 <div class="q-gutter-sm">
                     <div class="full-width row wrap justify-evenly">
-                        <q-card class="col col-5 q-my-lg">
+                        <q-card class="col col-4 q-my-lg">
                             <chart-bar />
                         </q-card>
-                        <q-card class="col col-5 q-my-lg">
+                        <q-card class="col col-3 q-my-lg">
                             <chart-line />
                         </q-card>
                         <q-card class="col col-4 q-my-lg">
                             <chart-doughnut />
                         </q-card>
 
-                        <q-card class="col col-6 q-my-lg">
+                        <q-card class="col col-4 q-my-lg">
                             <chart-bar2 />
                         </q-card>
 
-                        <q-card class="col col-5 q-my-lg">
+                        <q-card class="col col-3 q-my-lg">
                             <chart-polar-area />
                         </q-card>
-                        <q-card class="col col-5 q-my-lg">
+                        <q-card class="col col-3 q-my-lg">
                             <chart-radar />
                         </q-card>
                     </div>

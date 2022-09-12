@@ -1,6 +1,8 @@
 <template>
-    <q-avatar class="q-mx-lg">
-        <q-icon size="lg" name="settings" />
+    <div class="q-mx-sm">
+        <q-btn flat round color="white">
+            <q-icon size="lg" name="settings" />
+        </q-btn>
         <q-menu :offset="[90, 5]">
             <q-list style="min-width: 100px">
                 <q-item class="row items-center">
@@ -68,7 +70,7 @@
                 </q-item>
             </q-list>
         </q-menu>
-    </q-avatar>
+    </div>
 </template>
 
 <script setup>

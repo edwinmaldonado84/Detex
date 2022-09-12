@@ -1,29 +1,34 @@
 <template>
-    <q-chip clickable>
-        <q-avatar>
-            <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
-        </q-avatar>
-        <span v-text="store.getters.user?.name" />
-        <q-menu :offset="[0, 10]">
-            <q-list style="min-width: 150px">
-                <q-item clickable v-close-popup class="row items-center">
-                    <q-icon size="xs" :name="'edit'" />
-                    <q-item-section class="q-pl-md" v-text="'Edit account'" />
-                </q-item>
-                <q-separator />
-                <q-item
-                    clickable
-                    v-close-popup
-                    class="row items-center"
-                    @click.native="logout"
-                >
-                    <q-icon size="xs" :name="'logout'" />
-                    <q-item-section class="q-pl-md" v-text="'Logout'" />
-                </q-item>
-                <q-separator />
-            </q-list>
-        </q-menu>
-    </q-chip>
+    <div class="q-mx-sm">
+        <q-chip clickable>
+            <q-avatar>
+                <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+            </q-avatar>
+            <span v-text="store.getters.user?.name" />
+            <q-menu :offset="[0, 10]">
+                <q-list style="min-width: 150px">
+                    <q-item clickable v-close-popup class="row items-center">
+                        <q-icon size="xs" :name="'edit'" />
+                        <q-item-section
+                            class="q-pl-md"
+                            v-text="'Edit account'"
+                        />
+                    </q-item>
+                    <q-separator />
+                    <q-item
+                        clickable
+                        v-close-popup
+                        class="row items-center"
+                        @click.native="logout"
+                    >
+                        <q-icon size="xs" :name="'logout'" />
+                        <q-item-section class="q-pl-md" v-text="'Logout'" />
+                    </q-item>
+                    <q-separator />
+                </q-list>
+            </q-menu>
+        </q-chip>
+    </div>
 </template>
 <script setup>
 import { useStore } from "vuex";
