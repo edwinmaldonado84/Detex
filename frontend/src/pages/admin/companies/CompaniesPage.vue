@@ -1,21 +1,22 @@
 <template>
-    <div class="q-px-md">
+    <div class="q-pa-md">
         <q-table
             v-model:selected="selected"
             title="Companies"
             :rows="rows"
             :columns="columns"
             row-key="id"
+            @row-dblclick="onRowClick"
             v-model:pagination="pagination"
             :loading="loading"
             :filter="filter"
             @request="onRequest"
-            binary-state-sort
             class="my-sticky-header-table"
             :title-class="'text-h3 text-primary text-weight-bolder'"
             color="black"
-            selection="single"
             :card-style="{ padding: '20px' }"
+            table-header-class="bg-primary text-white text-h4"
+            card-style="{ padding: '20px' }"
         >
             <template v-slot:top-right>
                 <div class="q-pr-lg">
@@ -46,21 +47,6 @@
                 </q-input>
             </template>
 
-            <template v-slot:header="props">
-                <q-tr :props="props">
-                    <q-th
-                        v-for="col in props.cols"
-                        :key="col.name"
-                        :props="props"
-                    >
-                        <span
-                            class="text-white text-subtitle1 text-weight-bolder"
-                            v-text="col.label"
-                        />
-                    </q-th>
-                </q-tr>
-            </template>
-
             <template v-slot:no-data="{ icon, message, filter }">
                 <div class="full-width row flex-center q-gutter-sm q-py-lg">
                     <q-icon
@@ -77,25 +63,9 @@
                     />
                 </div>
             </template>
-
-            <template v-slot:body="props">
-                <q-tr
-                    :props="props"
-                    @click.native="props.selected = !props.selected"
-                >
-                    <q-td
-                        v-for="col in props.cols"
-                        :key="col.name"
-                        :props="props"
-                    >
-                        {{ col.value }}
-                    </q-td>
-                </q-tr>
-            </template>
         </q-table>
     </div>
 </template>
-
 <script setup>
 import { ref, onMounted } from "vue";
 
@@ -174,32 +144,23 @@ const onRequest = async (props) => {
     loading.value = false;
 };
 
-const selectEvent = (evt, row, index) => {
-    console.log("event");
-};
+function onRowClick(evt, row) {
+    console.log("clicked on", row);
+    selected.value = [];
+    selected.value.push(row);
+}
 </script>
 <style lang="sass">
 .my-sticky-header-table
-    max-height: 88vh
-    .q-tr.selected
-        background-color: $accent
-        .q-td
-            color: white !important
-            font-weight: 800
-    .q-tr
-        cursor: pointer
-        /* height or max-height is important */
-    .q-table__top,
-    .q-table__bottom,
-    thead tr:first-child th
-    /* bg color is important for th; just specify one */
-    // background-color: $primary
+    max-height: 86vh
     thead tr th
         position: sticky
         z-index: 1
-        background-color: $primary
+        font-size: 1.1rem !important
     thead tr:first-child th
         top: 0
     .q-table__linear-progress
         height: 4px
+.selected
+    background-color: $accent
 </style>
