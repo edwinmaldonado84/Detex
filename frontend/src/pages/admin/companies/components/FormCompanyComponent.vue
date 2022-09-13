@@ -6,7 +6,7 @@
             >
                 <div
                     class="text-h4 text-white"
-                    v-text="props.datas.length > 0 ? 'Edit' : 'New'"
+                    v-text="props.datas?.name ? 'Edit' : 'New'"
                 />
 
                 <q-space />
@@ -129,7 +129,6 @@ watch(show, (val) => {
     }
 });
 onMounted(() => {
-    console.log("datas", props.datas);
     if (props.datas) {
         Object.keys(form).forEach((key) => {
             form[key] = props.datas[key];

@@ -1,7 +1,6 @@
 <template>
     <div class="q-pa-md">
-        Selected: {{ JSON.stringify(selected) }} datas:
-        {{ JSON.stringify(datas) }}
+
         <q-table
             v-model:selected="selected"
             title="Companies"
@@ -171,10 +170,6 @@ const onRequest = async (props) => {
 };
 
 function onRowClick(evt, row) {
-    console.log(
-        "🚀 ~ file: CompaniesPage.vue ~ line 172 ~ onRowClick ~ row",
-        row
-    );
     selected.value.push(row);
     datas.value = row;
     show.value = true;
