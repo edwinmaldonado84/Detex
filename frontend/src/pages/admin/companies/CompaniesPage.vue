@@ -13,13 +13,16 @@
         >
             <template v-slot:top-right>
                 <q-input
-                    borderless
                     dense
-                    debounce="300"
+                    debounce="500"
                     v-model="filter"
-                    placeholder="Search"
+                    label="Search"
+                    hide-hint
+                    clearable
+                    autogrow
+                    style="width: 400px"
                 >
-                    <template v-slot:append>
+                    <template v-slot:prepend>
                         <q-icon name="search" />
                     </template>
                 </q-input>
@@ -28,8 +31,12 @@
     </div>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted } from "vue";
+
+const rows = ref([]);
+const filter = ref("");
+const loading = ref(false);
 
 const columns = [
     {
@@ -51,69 +58,45 @@ const columns = [
     { name: "Address", label: "Address", field: "address" },
     { name: "Owner", label: "Owner", field: "owner" },
 ];
+const pagination = ref({
+    sortBy: "desc",
+    descending: false,
+    page: 1,
+    rowsPerPage: 15,
+    rowsNumber: 0,
+});
 
-export default {
-    setup() {
-        const rows = ref([]);
-        const filter = ref("");
-        const loading = ref(false);
-        const pagination = ref({
-            sortBy: "desc",
-            descending: false,
-            page: 1,
-            rowsPerPage: 3,
-            rowsNumber: 10,
-        });
+const onRequest = async (props) => {
+    loading.value = true;
+    const { page, rowsPerPage, sortBy, descending } = props.pagination;
+    let params = {
+        name: filter.value,
+        // sortBy: sortBy,
+        // sortDesc: sortDesc,
+        page: page,
+        per_page: rowsPerPage,
+    };
+    const { data } = await axios
+        .get("/api/company", {
+            params: params,
+        })
+        .catch(function (error) {});
 
-        async function onRequest(props) {
-            const { page, rowsPerPage, sortBy, descending } = props.pagination;
+    rows.value = data.data.data;
+    pagination.value.rowsNumber = data.data.total;
+    pagination.value.page = data.data.current_page;
+    pagination.value.rowsPerPage = pagination.value.rowsPerPage;
 
-            loading.value = true;
-
-            let params = {
-                name: filter.value,
-                // sortBy: sortBy,
-                // sortDesc: sortDesc,
-                page: page,
-                per_page: rowsPerPage,
-            };
-            const { data } = await axios
-                .get("/api/company", {
-                    params: params,
-                })
-                .catch(function (error) {});
-            console.log(
-                "🚀 ~ file: CompaniesPage.vue ~ line 84 ~ loadDatas ~ data.data",
-                data.data
-            );
-            rows.value = data.data.data;
-            pagination.value.rowsNumber = data.data.total;
-            pagination.value.page = data.data.current_page;
-            pagination.value.rowsPerPage = pagination.value.rowsPerPage;
-            /*
-
-            pagination.value.sortBy = sortBy;
-            pagination.value.descending = descending; */
-            loading.value = false;
-        }
-
-        onMounted(() => {
-            // get initial data from server (1st page)
-            onRequest({
-                pagination: pagination.value,
-                filter: undefined,
-            });
-        });
-
-        return {
-            filter,
-            loading,
-            pagination,
-            columns,
-            rows,
-
-            onRequest,
-        };
-    },
+    // pagination.value.sortBy = sortBy;
+    // pagination.value.descending = descending;
+    loading.value = false;
 };
+
+onMounted(async () => {
+    // get initial data from server (1st page)
+    onRequest({
+        pagination: pagination.value,
+        filter: undefined,
+    });
+});
 </script>

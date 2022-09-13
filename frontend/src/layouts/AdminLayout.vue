@@ -38,7 +38,7 @@
                 <DeTagsViewComponent />
             </div>
             <router-view v-slot="{ Component, route }">
-                <q-slide-transition :duration="3000">
+                <q-slide-transition :duration="500">
                     <keep-alive :include="cachedViews">
                         <component :is="Component" :key="route.path" />
                     </keep-alive>
