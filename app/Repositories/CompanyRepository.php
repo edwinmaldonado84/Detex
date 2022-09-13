@@ -17,6 +17,7 @@ class CompanyRepository extends BaseRepository
 
         return $this->get($params, [], function ($q) use ($params) {
             $q->ofId($params['id'] ?? '');
+            $q->ofName($params['name'] ?? '');
 
             if (isset($params['sortBy'][0])) {
                 $q->orderBy($params['sortBy'][0] ?? 'id', $params['sortDesc'][0] == 'true' ? 'desc' : 'asc');
