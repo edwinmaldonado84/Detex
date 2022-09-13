@@ -20,9 +20,7 @@ class CompanyRepository extends BaseRepository
             $q->ofName($params['name'] ?? '');
             $q->ofSearch($params['search'] ?? '');
 
-            if (isset($params['sortBy'][0])) {
-                $q->orderBy($params['sortBy'][0] ?? 'id', $params['sortDesc'][0] == 'true' ? 'desc' : 'asc');
-            }
+            $q->orderBy($params['sortBy'] ?? 'id', $params['sortDesc'] == 'true' ? 'desc' : 'asc');
 
             return $q;
         });

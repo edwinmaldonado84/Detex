@@ -97,11 +97,23 @@ const columns = [
         field: "phone",
         sortable: true,
     },
-    { name: "Address", label: "Address", align: "left", field: "address" },
-    { name: "Owner", label: "Owner", align: "left", field: "owner" },
+    {
+        name: "Address",
+        label: "Address",
+        align: "left",
+        field: "address",
+        sortable: false,
+    },
+    {
+        name: "Owner",
+        label: "Owner",
+        align: "left",
+        field: "owner",
+        sortable: true,
+    },
 ];
 const pagination = ref({
-    sortBy: "desc",
+    sortBy: "id",
     descending: false,
     page: 1,
     rowsPerPage: 15,
@@ -118,12 +130,12 @@ onMounted(async () => {
 
 const onRequest = async (props) => {
     loading.value = true;
-
     const { page, rowsPerPage, sortBy, descending } = props.pagination;
+
     let params = {
         search: filter.value,
-        // sortBy: sortBy,
-        // sortDesc: sortDesc,
+        sortBy: sortBy,
+        sortDesc: descending,
         page: page,
         per_page: rowsPerPage,
     };
@@ -137,6 +149,8 @@ const onRequest = async (props) => {
     pagination.value.rowsNumber = data.data.total;
     pagination.value.page = data.data.current_page;
     pagination.value.rowsPerPage = pagination.value.rowsPerPage;
+    pagination.value.sortBy = sortBy;
+    pagination.value.descending = descending;
 
     // pagination.value.sortBy = sortBy;
     // pagination.value.descending = descending;
