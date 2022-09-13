@@ -1,11 +1,13 @@
 <template>
     <div class="q-pa-md">
+        Selected: {{ JSON.stringify(selected) }} datas:
+        {{ JSON.stringify(datas) }}
         <q-table
             v-model:selected="selected"
             title="Companies"
             :rows="rows"
             :columns="columns"
-            row-key="id"
+            row-key="name"
             @row-dblclick="onRowClick"
             v-model:pagination="pagination"
             :loading="loading"
@@ -27,6 +29,7 @@
                         label="New"
                         ripple
                         style="width: 100px"
+                        @click="(show = true), (datas = [])"
                     />
                 </div>
                 <q-input
@@ -64,15 +67,24 @@
                 </div>
             </template>
         </q-table>
+        <FormCompanyComponent
+            v-if="show"
+            @update:show="(newValue) => (show = newValue)"
+            @clean="(selected = []), (datas = [])"
+            :datas="datas"
+        />
     </div>
 </template>
 <script setup>
-import { ref, onMounted } from "vue";
+import FormCompanyComponent from "./components/FormCompanyComponent.vue";
+import { reactive, ref, onMounted } from "vue";
 
 const rows = ref([]);
 const filter = ref("");
 const loading = ref(false);
 const selected = ref([]);
+const datas = ref([]);
+const show = ref(false);
 
 const columns = [
     {
@@ -159,9 +171,13 @@ const onRequest = async (props) => {
 };
 
 function onRowClick(evt, row) {
-    console.log("clicked on", row);
-    selected.value = [];
+    console.log(
+        "🚀 ~ file: CompaniesPage.vue ~ line 172 ~ onRowClick ~ row",
+        row
+    );
     selected.value.push(row);
+    datas.value = row;
+    show.value = true;
 }
 </script>
 <style lang="sass">

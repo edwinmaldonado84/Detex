@@ -11,9 +11,16 @@
     },
     "inputs":{
         "email": "Correo electrónico",
-        "password": "Contraseña"
+        "password": "Contraseña",
+        "name": "Nombre",
+        "owner": "Dueño",
+        "rfc": "RFC",
+        "phone": "Teléfono",
+        "address": "Dirección"
     },
     "buttons":{
-        "login": "Ingresar"
+        "login": "Ingresar",
+        "save": "Guardar",
+        "cancel": "Cancelar"
     }
 }

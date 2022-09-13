@@ -33,7 +33,7 @@ export default [
             noCache: false,
             layout: AdminLayout,
             middleware: "auth",
-            icon: "apartment",
+            icon: "business",
             affix: false,
             separator: true,
         },
