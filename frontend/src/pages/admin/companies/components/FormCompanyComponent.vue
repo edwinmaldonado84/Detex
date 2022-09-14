@@ -6,7 +6,7 @@
             >
                 <div
                     class="text-h4 text-white"
-                    v-text="props.datas?.name ? 'Edit' : 'New'"
+                    v-text="props.datas.length > 0 ? 'Edit' : 'New'"
                 />
 
                 <q-space />
@@ -110,11 +110,11 @@
 
 <script setup>
 import { useVuelidate } from "@vuelidate/core";
-import { ref, watch, onMounted } from "vue";
+import { ref, watch, onMounted, onBeforeUnmount } from "vue";
 import { rules, form } from "../validations";
 
 const props = defineProps({
-    datas: Object,
+    datas: Object || String,
 });
 
 const show = ref(true);
@@ -124,16 +124,14 @@ const v$ = useVuelidate(rules, form);
 
 watch(show, (val) => {
     if (!val) {
-        emit("update:show", false);
         emit("clean");
+        emit("update:show", false);
     }
 });
 onMounted(() => {
-    if (props.datas) {
-        Object.keys(form).forEach((key) => {
-            form[key] = props.datas[key];
-        });
-    }
+    Object.keys(form).forEach((key) => {
+        form[key] = props.datas.length > 0 ? props.datas[0][key] : null;
+    });
 });
 </script>
 

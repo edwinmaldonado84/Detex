@@ -10,9 +10,9 @@ export const rules = computed(() => ({
 }));
 
 export const form = reactive({
-    name: "",
-    owner: "",
-    rfc: "",
-    phone: "",
-    address: "",
+    name: null,
+    owner: null,
+    rfc: null,
+    phone: null,
+    address: null,
 });

@@ -1,6 +1,5 @@
 <template>
     <div class="q-pa-md">
-
         <q-table
             v-model:selected="selected"
             title="Companies"
@@ -69,8 +68,8 @@
         <FormCompanyComponent
             v-if="show"
             @update:show="(newValue) => (show = newValue)"
-            @clean="(selected = []), (datas = [])"
-            :datas="datas"
+            @clean="selected = []"
+            :datas="selected"
         />
     </div>
 </template>
@@ -82,7 +81,6 @@ const rows = ref([]);
 const filter = ref("");
 const loading = ref(false);
 const selected = ref([]);
-const datas = ref([]);
 const show = ref(false);
 
 const columns = [
@@ -171,7 +169,6 @@ const onRequest = async (props) => {
 
 function onRowClick(evt, row) {
     selected.value.push(row);
-    datas.value = row;
     show.value = true;
 }
 </script>
