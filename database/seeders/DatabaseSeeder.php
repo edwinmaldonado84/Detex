@@ -22,6 +22,10 @@ class DatabaseSeeder extends Seeder
         $client->createPersonalAccessClient(null, 'Default Personal Access Client', 'http://detext.test');
         $this->call([
             UserSeeder::class,
+            GroupSeeder::class,
+            // CompanySeeder::class,
+            PermissionSeeder::class,
+            RoleSeeder::class,
         ]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-trait BranchTrait
+trait ContactTrait
 {
     public function scopeOfId($query, $id)
     {

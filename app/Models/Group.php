@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use App\Traits\BranchTrait;
+use App\Traits\GroupTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Branch extends Model
+class Group extends Model
 {
-    use Notifiable, BranchTrait, SoftDeletes;
+    use Notifiable, GroupTrait, SoftDeletes, HasFactory;
 
-    protected $fillable = ['name', 'rfc', 'phone', 'address', 'owner', 'company_id'];
+    protected $fillable = ['name'];
     protected $appends = [];
     protected $hidden = ['deleted_at'];
 }

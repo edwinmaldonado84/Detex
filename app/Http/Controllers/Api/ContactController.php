@@ -5,30 +5,30 @@ namespace App\Http\Controllers\Api;
 use App\Traits\ApiResponse;
 use App\Exceptions\InvalidException;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\BranchRequest;
-use App\Repositories\BranchRepository;
+use App\Http\Requests\ContactRequest;
+use App\Repositories\contactRepository;
 
-class BranchController extends Controller
+class ContactController extends Controller
 {
     use ApiResponse;
-    private $branchRepository;
+    private $contactRepository;
 
-    public function __construct(BranchRepository $branchRepository)
+    public function __construct(ContactRepository $contactRepository)
     {
-        $this->branchRepository = $branchRepository;
+        $this->contactRepository = $contactRepository;
     }
 
-    public function index(BranchRequest $request)
+    public function index(ContactRequest $request)
     {
 
-        $list = $this->branchRepository->list($request->all());
+        $list = $this->contactRepository->list($request->all());
 
         return $this->successResponse($list, 'List', 200);
     }
 
-    public function store(BranchRequest $request)
+    public function store(ContactRequest $request)
     {
-        $create = $this->branchRepository->create($request->all());
+        $create = $this->contactRepository->create($request->all());
 
         if (!$create) throw InvalidException::forInvalid("Falló al Crear");
 
@@ -36,9 +36,9 @@ class BranchController extends Controller
     }
 
 
-    public function show(BranchRequest $request, $id)
+    public function show(ContactRequest $request, $id)
     {
-        $search = $this->branchRepository->find($id);
+        $search = $this->contactRepository->find($id);
 
         if (!$search) throw InvalidException::forInvalid("No se encontro.");
 
@@ -46,12 +46,12 @@ class BranchController extends Controller
     }
 
 
-    public function update(BranchRequest $request, $id)
+    public function update(ContactRequest $request, $id)
     {
 
         $payload = $request->all();
 
-        $updated = $this->branchRepository->update($id, $payload);
+        $updated = $this->contactRepository->update($id, $payload);
 
         if (!$updated) throw InvalidException::forInvalid("Falló al Actualizar");
 
@@ -59,11 +59,11 @@ class BranchController extends Controller
     }
 
 
-    public function destroy(BranchRequest $request, $id)
+    public function destroy(ContactRequest $request, $id)
     {
 
         try {
-            $this->branchRepository->delete($id);
+            $this->contactRepository->delete($id);
         } catch (\Exception $e) {
             throw InvalidException::forInvalid("No se puede eliminar la clase, hasta que elimine a todos los clientes de la lista de asistencia.");
         }

@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'guard_name' => 'api',
         ]);
 
-        $superadmin = User::create([
+        $edwin = User::create([
             'name' => 'Edwin Maldonado',
             'email' => 'edwin.maldonado84@gmail.com',
             'password' => Hash::make('apple123'),
@@ -34,8 +34,26 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        $edwin->assignRole($role);
 
+        $daniel = User::create([
+            'name' => 'Daniel Heil',
+            'email' => 'dh@detext.com',
+            'password' => Hash::make('apple123'),
+            'remember_token' => Str::random(10),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        $daniel->assignRole($role);
 
-        $superadmin->assignRole($role);
+        $elias = User::create([
+            'name' => 'Elias Dominguez',
+            'email' => 'ed84@detext.com',
+            'password' => Hash::make('apple123'),
+            'remember_token' => Str::random(10),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        $elias->assignRole($role);
     }
 }

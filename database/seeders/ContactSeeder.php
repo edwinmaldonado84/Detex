@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use Spatie\Permission\Models\Role;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class RoleSeeder extends Seeder
+class ContactSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,9 +14,6 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        Role::create([
-            'name' => 'Admin',
-            'guard_name' => 'api',
-        ]);
+        \App\Models\Contact::factory(100)->create();
     }
 }

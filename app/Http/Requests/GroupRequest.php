@@ -7,7 +7,7 @@ use App\Services\ApiPermissionsService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class CompanyRequest extends FormRequest
+class GroupRequest extends FormRequest
 {
 
     /**
@@ -19,11 +19,11 @@ class CompanyRequest extends FormRequest
     {
         $publics = [];
         $permitions = [
-            'GET' => 'company_read',
-            'POST' => 'company_create',
-            'PUT' => 'company_edit',
-            'PATCH' => 'company_edit',
-            'DELETE' => 'company_delete',
+            'GET' => 'group_read',
+            'POST' => 'group_create',
+            'PUT' => 'group_edit',
+            'PATCH' => 'group_edit',
+            'DELETE' => 'group_delete',
         ];
 
         $result = new ApiPermissionsService($this->user());
@@ -38,23 +38,13 @@ class CompanyRequest extends FormRequest
 
             case 'POST': {
                     return [
-                        'name' => '',
-                        'business_name' => 'required|unique:companies,business_name',
-                        'rfc' => 'required|unique:companies,rfc',
-                        'webpage' => '',
-                        'observations' => '',
-                        'group_id' => 'required',
+                        'name' => 'required|unique:groups,name',
                     ];
                 }
 
             case 'PATCH': {
                     return [
-                        'name' => '',
-                        'business_name' => 'unique:companies,business_name,' . $this->route('company'),
-                        'rfc' => 'unique:companies,rfc,' . $this->route('company'),
-                        'webpage' => '',
-                        'observations' => '',
-                        'group_id' => 'required',
+                        'name' => 'unique:groups,name,' . $this->route('group'),
                     ];
                 }
 
@@ -73,11 +63,8 @@ class CompanyRequest extends FormRequest
     public function messages()
     {
         return [
-            'business_name.required' => 'La :attribute es obligatoria.',
-            'business_name.unique' => 'La :attribute ya existe.',
-            'rfc.required' => 'El :attribute es obligatorio.',
-            'rfc.unique' => 'El :attribute ya existe.',
-            'group_id.required' => 'La :attribute es obligatoria.',
+            'name.required' => 'El :attribute es obligatorio.',
+            'name.unique' => 'El :attribute ya existe.',
         ];
     }
 
@@ -85,9 +72,7 @@ class CompanyRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'razón social',
-            'rfc' => 'RCF',
-            'group_id' => 'agrupación',
+            'name' => 'nombre del grupo',
         ];
     }
 

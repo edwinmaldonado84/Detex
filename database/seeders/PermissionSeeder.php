@@ -14,38 +14,16 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        $modules = ['group', 'company', 'contact'];
+        $types = ['read', 'create', 'edit', 'delete'];
 
-        Permission::create([
-            'name' => "superuser",
-            'guard_name' => 'api',
-        ]);
-
-
-        //SALES
-
-        /* Permission::create([
-            'name' => 'sale_read',
-            'guard_name' => 'api',
-        ]);
-
-        Permission::create([
-            'name' => 'sale_create',
-            'guard_name' => 'api',
-        ]);
-
-        Permission::create([
-            'name' => 'sale_edit',
-            'guard_name' => 'api',
-        ]);
-
-        Permission::create([
-            'name' => 'sale_delete',
-            'guard_name' => 'api',
-        ]);
-
-        Permission::create([
-            'name' => 'sale_report',
-            'guard_name' => 'api',
-        ]); */
+        foreach ($modules as $key => $moduleValue) {
+            foreach ($types as $key => $typeValue) {
+                Permission::create([
+                    'name' => $moduleValue . '_' . $typeValue,
+                    'guard_name' => 'api',
+                ]);
+            }
+        }
     }
 }

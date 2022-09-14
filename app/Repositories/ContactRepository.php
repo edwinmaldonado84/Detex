@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Models\Company;
+use App\Models\Contact;
 use App\Core\BaseRepository;
 
-class CompanyRepository extends BaseRepository
+class ContactRepository extends BaseRepository
 {
-    public function __construct(Company $model)
+    public function __construct(Contact $model)
     {
         parent::__construct($model);
     }
@@ -17,7 +17,6 @@ class CompanyRepository extends BaseRepository
 
         return $this->get($params, [], function ($q) use ($params) {
             $q->ofId($params['id'] ?? '');
-            $q->ofSearch($params['search'] ?? '');
 
             $q->orderBy($params['sortBy'] ?? 'id', $params['sortType'] ?? 'asc');
 

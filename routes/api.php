@@ -32,8 +32,9 @@ Route::group(['middleware' =>  'auth.key:api'], function () {
 Route::group(['middleware' => [
     'auth.key:api', 'role:SuperAdmin|Admin'
 ]], function () {
+    Route::apiResource('group', App\Http\Controllers\Api\GroupController::class);
     Route::apiResource('company', App\Http\Controllers\Api\CompanyController::class);
-    Route::apiResource('branch', App\Http\Controllers\Api\BranchController::class);
+    Route::apiResource('contact', App\Http\Controllers\Api\ContactController::class);
 });
 
 

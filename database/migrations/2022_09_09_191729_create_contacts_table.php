@@ -13,19 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('branches', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->string('rfc')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('address')->nullable();
-            $table->string('owner')->nullable();
-            $table->unsignedBigInteger('company_id');
+            $table->string('name');
+            $table->string('last_name');
+            $table->date('birtday')->nullable();
+            $table->string('observations')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('company_id')->references('id')->on('companies');
-            $table->unique(array('company_id', 'name'));
+            $table->unique(array('name', 'last_name'));
         });
     }
 

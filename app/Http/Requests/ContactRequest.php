@@ -10,7 +10,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class BranchRequest extends FormRequest
+class ContactRequest extends FormRequest
 {
 
     /**
@@ -22,11 +22,11 @@ class BranchRequest extends FormRequest
     {
         $publics = [];
         $permitions = [
-            'GET' => 'branch_read',
-            'POST' => 'branch_create',
-            'PUT' => 'branch_edit',
-            'PATCH' => 'branch_edit',
-            'DELETE' => 'branch_delete',
+            'GET' => 'contact_read',
+            'POST' => 'contact_create',
+            'PUT' => 'contact_edit',
+            'PATCH' => 'contact_edit',
+            'DELETE' => 'contact_delete',
         ];
 
         $result = new ApiPermissionsService($this->user());
@@ -42,34 +42,30 @@ class BranchRequest extends FormRequest
             case 'POST': {
                     return [
                         'name' => 'required',
-                        'rfc' => '',
-                        'phone' => '',
-                        'address' => '',
-                        'owner' => '',
-                        'company_id' => [
+                        'last_name' => [
                             'required',
-                            Rule::unique('branches')->where(function ($query) {
+                            Rule::unique('contacts')->where(function ($query) {
                                 return $query->where('name', request('name'))
-                                    ->where('company_id', request('company_id'));
+                                    ->where('last_name', request('last_name'));
                             }),
                         ],
+                        'birtday' => '',
+                        'observations' => '',
                     ];
                 }
 
             case 'PATCH': {
                     return [
                         'name' => 'required',
-                        'rfc' => '',
-                        'phone' => '',
-                        'address' => '',
-                        'owner' => '',
-                        'company_id' => [
+                        'last_name' => [
                             'required',
-                            Rule::unique('branches')->where(function ($query) {
+                            Rule::unique('contacts')->where(function ($query) {
                                 return $query->where('name', request('name'))
-                                    ->where('company_id', request('company_id'));
-                            })->ignore($this->route('company')),
+                                    ->where('last_name', request('last_name'));
+                            })->ignore($this->route('contact')),
                         ],
+                        'birtday' => '',
+                        'observations' => '',
                     ];
                 }
 
@@ -88,9 +84,9 @@ class BranchRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'El nombre de la :attribute es obligatorio.',
-            'company_id.required' => 'La :attribute es obligatoria.',
-            'company_id.unique' => 'La :attribute ya tiene esta sucursal.',
+            'name.required' => 'El :attribute es obligatorio.',
+            'last_name.required' => 'El :attribute es obligatorio.',
+            'last_name.unique' => 'El nombre y apellido ya existen.',
         ];
     }
 
@@ -98,8 +94,8 @@ class BranchRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'Sucursal',
-            'company_id' => 'Compania',
+            'name' => 'nombre',
+            'last_name' => 'apellido',
         ];
     }
 
@@ -107,7 +103,7 @@ class BranchRequest extends FormRequest
     /**
      * @return request merge values and valid after
      */
-    public function validationData()
+    /*  public function validationData()
     {
         if ($this->route()->getActionMethod() == 'store') {
             if (!Company::where('id', '=', $this->company_id)->exists()) {
@@ -117,7 +113,7 @@ class BranchRequest extends FormRequest
             }
         }
         return array_merge($this->all());
-    }
+    } */
 
 
     protected function failedValidation(Validator $validator)

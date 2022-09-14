@@ -12,7 +12,7 @@ class Company extends Authenticatable
 {
     use Notifiable, CompanyTrait, SoftDeletes, HasFactory;
 
-    protected $fillable = ['name', 'rfc', 'phone', 'address', 'owner'];
+    protected $fillable = ['name', 'business_name', 'rfc', 'webpage', 'observations', 'group_id'];
     protected $appends = [];
     protected $hidden = ['deleted_at'];
 }

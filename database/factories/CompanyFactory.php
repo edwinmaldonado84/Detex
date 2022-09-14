@@ -19,10 +19,11 @@ class CompanyFactory extends Factory
     {
         return [
             'name' => $this->faker->company(),
+            'business_name' => $this->faker->company(),
             'rfc' => $this->faker->regexify('[A-Z]{5}[0-4]{3}'),
-            'phone' => $this->faker->phoneNumber(),
-            'address' => $this->faker->address(),
-            'owner' => $this->faker->name(),
+            'webpage' => $this->faker->safeEmailDomain(),
+            'observations' => $this->faker->sentence(10, true),
+            'group_id' => $this->faker->numberBetween(1, 3)
         ];
     }
 }

@@ -2,12 +2,12 @@
 
 namespace App\Repositories;
 
-use App\Models\Branch;
+use App\Models\Group;
 use App\Core\BaseRepository;
 
-class BranchRepository extends BaseRepository
+class GroupRepository extends BaseRepository
 {
-    public function __construct(Branch $model)
+    public function __construct(Group $model)
     {
         parent::__construct($model);
     }
@@ -17,10 +17,9 @@ class BranchRepository extends BaseRepository
 
         return $this->get($params, [], function ($q) use ($params) {
             $q->ofId($params['id'] ?? '');
+            $q->ofName($params['name'] ?? '');
 
-            if (isset($params['sortBy'][0])) {
-                $q->orderBy($params['sortBy'][0] ?? 'id', $params['sortDesc'][0] == 'true' ? 'desc' : 'asc');
-            }
+            $q->orderBy($params['sortBy'] ?? 'id', $params['sortType'] ?? 'asc');
 
             return $q;
         });
