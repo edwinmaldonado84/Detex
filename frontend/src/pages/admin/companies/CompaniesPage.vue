@@ -144,7 +144,7 @@ const onRequest = async (props) => {
     let params = {
         search: filter.value,
         sortBy: sortBy,
-        sortDesc: descending,
+        sortType: sortBy ? (descending ? "desc" : "asc") : "asc",
         page: page,
         per_page: rowsPerPage,
     };
