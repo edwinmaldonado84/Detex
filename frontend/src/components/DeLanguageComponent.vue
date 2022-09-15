@@ -27,17 +27,13 @@
 </template>
 
 <script setup>
-import { onMounted, watch, computed, reactive } from "vue";
+import { onMounted, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useStore } from "vuex";
 import { useQuasar } from "quasar";
-const langList = import.meta.glob("../../node_modules/quasar/lang/*.mjs", {
-    eager: true,
-});
 
 const store = useStore();
 const $q = useQuasar();
-const Languages = reactive(langList);
 const { locale } = useI18n({
     useScope: "global",
 });
@@ -54,9 +50,9 @@ watch(locale, async (value) => {
 });
 
 const changeLanguage = async (val) => {
-    $q.lang.set(
-        Languages["../../node_modules/quasar/lang/" + val + ".mjs"].default
-    );
+    await import(`../../node_modules/quasar/lang/${val}.mjs`).then((lang) => {
+        $q.lang.set(lang.default);
+    });
 };
 </script>
 <style lang="scss" scoped>
