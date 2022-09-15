@@ -39,7 +39,7 @@
                             <q-icon size="xs" :name="scope.opt.icon" />
                             <q-item-section
                                 class="q-pl-md"
-                                v-text="scope.opt.label"
+                                v-text="scope.opt.label.join(' > ')"
                             />
                         </q-item>
                     </template>
@@ -66,7 +66,7 @@ const routes = computed(() => {
 });
 
 onMounted(async () => {
-    items.routes = generateRoutes(routes);
+    items.routes = generateRoutes(routes.value);
 });
 
 watch(model, (val) => {
@@ -99,27 +99,38 @@ const click = () => {
     }
 };
 
-const generateRoutes = (routes, basePath = "/", prefixTitle = []) => {
+const generateRoutes = (routes, basePath = null, prefixTitle = []) => {
     let res = [];
-    for (const router of routes.value) {
+    for (const router of routes) {
         // skip hidden router
         if (router.hidden) {
             continue;
         }
+
+        const data = {
+            // value: router.path,
+            value: basePath ? basePath + "/" + router.path : router.path,
+            label: [...prefixTitle],
+            icon: router.meta.icon,
+        };
+
         if (router.meta && router.meta.title && !router.noSearch) {
             if (router.redirect !== "noRedirect") {
                 // only push the routes with title
                 // special case: need to exclude parent router without redirect
-                const data = {
-                    value: router.path,
-                    label: router.meta.title,
-                    icon: router.meta.icon,
-                };
-                res.push(data);
+                data.label = [...data.label, router.meta.title];
+
+                if (router.redirect !== "noRedirect") {
+                    // only push the routes with title
+                    // special case: need to exclude parent router without redirect
+                    res.push(data);
+                }
             }
         }
+
         // recursive child routes
-        /* if (router.children) {
+
+        if (router.children) {
             const tempRoutes = generateRoutes(
                 router.children,
                 data.value,
@@ -128,7 +139,7 @@ const generateRoutes = (routes, basePath = "/", prefixTitle = []) => {
             if (tempRoutes.length >= 1) {
                 res = [...res, ...tempRoutes];
             }
-        } */
+        }
     }
     return res;
 };

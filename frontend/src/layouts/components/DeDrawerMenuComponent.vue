@@ -18,8 +18,8 @@
                         :key="subItem.path"
                     >
                         <q-item clickable v-ripple :to="{ name: subItem.name }">
-                            <q-item-section avatar>
-                                <!-- <q-icon right :name="subItem.meta.icon" /> -->
+                            <q-item-section class="q-pl-xl" avatar>
+                                <q-icon :name="subItem.meta.icon" />
                             </q-item-section>
                             <q-item-section v-text="subItem.meta.title" />
                         </q-item>
@@ -69,6 +69,6 @@ const items = computed(() => {
 });
 
 watch(route, (val) => {
-    model[val] = true;
+    model[val.matched[0].path] = true;
 });
 </script>
