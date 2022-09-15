@@ -16,11 +16,19 @@
         "owner": "Dueño",
         "rfc": "RFC",
         "phone": "Teléfono",
-        "address": "Dirección"
+        "address": "Dirección",
+        "search": "Buscar"
     },
     "buttons":{
         "login": "Ingresar",
         "save": "Guardar",
-        "cancel": "Cancelar"
+        "cancel": "Cancelar",
+        "new": "Nuevo",
+        "add": "Agregar"
+    },
+    "tables":{
+        "name": "Nombre",
+        "created": "Creación",
+        "updated": "Actualización"
     }
 }

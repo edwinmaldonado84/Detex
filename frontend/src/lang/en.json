@@ -15,12 +15,20 @@
         "owner": "Owner",
         "rfc": "RFC",
         "phone": "Phone",
-        "address": "Address"
+        "address": "Address",
+        "search": "Search"
 
     },
     "buttons":{
         "login": "Login",
         "save": "Save",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "new": "New",
+        "add": "Add"
+    },
+    "tables":{
+        "name": "Name",
+        "created": "Created",
+        "updated": "Updated"
     }
 }

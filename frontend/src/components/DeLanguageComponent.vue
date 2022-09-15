@@ -30,18 +30,39 @@
 import { onMounted, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useStore } from "vuex";
+import { useQuasar } from "quasar";
+import esLang from "quasar/lang/es";
+import enLang from "quasar/lang/en-US";
 
 const store = useStore();
+const $q = useQuasar();
 const { locale } = useI18n({
     useScope: "global",
 });
 
 onMounted(() => {
     locale.value = store.getters.language;
+    $q.lang.set(locale.value == "es" ? esLang : enLang);
 });
 
-watch(locale, (value) => {
+watch(locale, async (value) => {
     locale.value = value;
+    console.log(
+        "🚀 ~ file: DeLanguageComponent.vue ~ line 49 ~ watch ~ value",
+        value
+    );
+
+    $q.lang.set(value == "es" ? esLang : enLang);
+    // $q.lang.set("es");
+    /*    import("quasar/lang/" + value).then((language) => {
+        console.log(
+            "🚀 ~ file: DeLanguageComponent.vue ~ line 50 ~ awaitimport ~ language.default",
+            language.default
+        );
+        $q.lang.set(language.default);
+    }); */
+    $q.lang.getLocale();
+
     store.dispatch("lang/setLanguage", value);
 });
 </script>

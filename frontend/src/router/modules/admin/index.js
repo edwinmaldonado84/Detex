@@ -98,7 +98,7 @@ export default [
                 path: "groups",
                 name: "Groups",
                 component: () =>
-                    import("../../../pages/admin/settings/groups/Groups.vue"),
+                    import("../../../pages/admin/settings/groups/GroupsPage.vue"),
                 meta: {
                     title: "Groups",
                     noCache: true,
@@ -131,7 +131,7 @@ export default [
                 path: "charges",
                 name: "Charges",
                 component: () =>
-                    import("../../../pages/admin/settings/charges/Charges.vue"),
+                    import("../../../pages/admin/settings/charges/ChargesPage.vue"),
                 meta: {
                     title: "Charges",
                     noCache: true,
