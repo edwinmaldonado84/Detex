@@ -23,6 +23,52 @@ export default [
         },
     },
     {
+        path: "/orders",
+        name: "OrdersPage",
+        hidden: false,
+        component: () => import("../../../pages/admin/orders/OrdersPage.vue"),
+        meta: {
+            title: "Orders",
+            noCache: false,
+            layout: AdminLayout,
+            middleware: "auth",
+            icon: "shopping_bag",
+            affix: false,
+            separator: true,
+        },
+    },
+    {
+        path: "/contacts",
+        name: "ContactPage",
+        hidden: false,
+        component: () =>
+            import("../../../pages/admin/contacts/ContactPage.vue"),
+        meta: {
+            title: "Contact",
+            noCache: false,
+            layout: AdminLayout,
+            middleware: "auth",
+            icon: "contact_phone",
+            affix: false,
+            separator: true,
+        },
+    },
+    {
+        path: "/bank",
+        name: "BankPage",
+        hidden: false,
+        component: () => import("../../../pages/admin/bank/BankPage.vue"),
+        meta: {
+            title: "Bank",
+            noCache: false,
+            layout: AdminLayout,
+            middleware: "auth",
+            icon: "account_balance",
+            affix: false,
+            separator: true,
+        },
+    },
+    {
         path: "/users",
         name: "UsersPage",
         hidden: false,
@@ -68,7 +114,9 @@ export default [
                 name: "CompaniesPage",
                 hidden: false,
                 component: () =>
-                    import("../../../pages/admin/companies/CompaniesPage.vue"),
+                    import(
+                        "../../../pages/admin/settings/companies/CompaniesPage.vue"
+                    ),
                 meta: {
                     title: "Companies",
                     noCache: false,
