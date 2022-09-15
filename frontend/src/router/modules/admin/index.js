@@ -23,6 +23,34 @@ export default [
         },
     },
     {
+        path: "/settings",
+        name: "SettingsPage",
+        redirect: "/settings/groups",
+        meta: {
+            title: "Settings",
+            icon: "settings",
+            affix: false,
+        },
+        children: [
+            {
+                path: "groups",
+                name: "Groups",
+                component: () =>
+                    import("../../../pages/admin/settings/groups/Groups.vue"),
+                meta: {
+                    title: "Groups",
+                    noCache: true,
+                    layout: AdminLayout,
+                    middleware: "auth",
+                    icon: "business",
+                    affix: false,
+                    separator: true,
+                },
+            },
+        ],
+    },
+
+    {
         path: "/companies",
         name: "CompaniesPage",
         hidden: false,
