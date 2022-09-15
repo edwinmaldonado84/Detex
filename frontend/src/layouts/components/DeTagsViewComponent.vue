@@ -21,7 +21,7 @@
             :text-color="isActive(tag) ? 'white' : ''"
             class="q-bg--dark-red"
         >
-            {{ tag.title }}
+            {{ $t(tag.title) }}
             <q-menu v-model="visible" v-if="selectedTag == tag" auto-close>
                 <q-list style="min-width: 100px">
                     <q-item

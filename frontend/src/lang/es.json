@@ -1,45 +1,50 @@
 {
-    "home": "Casa",
+    "buttons": {
+        "add": "Agregar",
+        "cancel": "Cancelar",
+        "dark": "Oscuro",
+        "edit_account": "Editar cuenta",
+        "hidde": "Ocultar",
+        "light": "Claro",
+        "login": "Ingresar",
+        "logout": "Salir",
+        "new": "Nuevo",
+        "save": "Guardar",
+        "show": "Mostrar"
+    },
     "dashboard": "Dashboard",
-    "language": "Idioma",
-    "errors":{
-        "required": "Requerido.",
+    "errors": {
         "invalid_email": "Correo electronico invalido.",
         "min_password": "Deberia contener almenos 8 caracteres.",
-        "something_is_wrong":"Algo salio mal!"
-
+        "required": "Requerido.",
+        "something_is_wrong": "Algo salio mal!"
     },
-    "inputs":{
+    "home": "Casa",
+    "inputs": {
+        "address": "Dirección",
         "email": "Correo electrónico",
-        "password": "Contraseña",
         "name": "Nombre",
         "owner": "Dueño",
-        "rfc": "RFC",
+        "password": "Contraseña",
         "phone": "Teléfono",
-        "address": "Dirección",
+        "rfc": "RFC",
         "search": "Buscar"
     },
-    "buttons":{
-        "login": "Ingresar",
-        "save": "Guardar",
-        "cancel": "Cancelar",
-        "new": "Nuevo",
-        "add": "Agregar"
-    },
-    "tables":{
-        "name": "Nombre",
-        "created": "Creación",
-        "updated": "Actualización"
-    },
-    "pages":{
-        "dashboard": "Dashboard",
-        "orders": "Ordenes",
-        "contact": "Contactos",
+    "language": "Idioma",
+    "pages": {
         "bank": "Banco",
-        "users": "Usuarios",
-        "settings": "Configuración",
-        "groups": "Grupos",
+        "charges": "Cargos",
         "companies": "Empresas",
-        "charges": "Cargos"
+        "contact": "Contactos",
+        "dashboard": "Dashboard",
+        "groups": "Grupos",
+        "orders": "Ordenes",
+        "settings": "Configuración",
+        "users": "Usuarios"
+    },
+    "tables": {
+        "created": "Creación",
+        "name": "Nombre",
+        "updated": "Actualización"
     }
 }

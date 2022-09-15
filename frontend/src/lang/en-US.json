@@ -1,45 +1,49 @@
 {
-    "home": "Home",
-    "language": "Language",
-    "errors":{
-        "required": "Required.",
+    "buttons": {
+        "add": "Add",
+        "cancel": "Cancel",
+        "dark": "Dark",
+        "edit_account": "Edit account",
+        "hidde": "Hidde",
+        "light": "Light",
+        "login": "Login",
+        "logout": "Logout",
+        "new": "New",
+        "save": "Save",
+        "show": "Show"
+    },
+    "errors": {
         "invalid_email": "Invalid Email",
         "min_password": "It should contain at least 8 characters",
-        "something_is_wrong":"Something is wrong!"
+        "required": "Required.",
+        "something_is_wrong": "Something is wrong!"
     },
-    "inputs":{
+    "home": "Home",
+    "inputs": {
+        "address": "Address",
         "email": "E-mail",
-        "password": "Password",
         "name": "Name",
         "owner": "Owner",
-        "rfc": "RFC",
+        "password": "Password",
         "phone": "Phone",
-        "address": "Address",
+        "rfc": "RFC",
         "search": "Search"
-
     },
-    "buttons":{
-        "login": "Login",
-        "save": "Save",
-        "cancel": "Cancel",
-        "new": "New",
-        "add": "Add"
-    },
-    "tables":{
-        "name": "Name",
-        "created": "Created",
-        "updated": "Updated"
-    },
-    "pages":{
-        "dashboard": "Dashboard",
-        "orders": "Orders",
-        "contact": "Contact",
+    "language": "Language",
+    "pages": {
         "bank": "Bank",
-        "users": "Users",
-        "settings": "Settings",
-        "groups": "Groups",
+        "charges": "Charges",
         "companies": "Companies",
-        "charges": "Charges"
+        "contact": "Contact",
+        "dashboard": "Dashboard",
+        "groups": "Groups",
+        "orders": "Orders",
+        "settings": "Settings",
+        "users": "Users"
+    },
+    "tables": {
+        "created": "Created",
+        "name": "Name",
+        "updated": "Updated"
     }
-
 }

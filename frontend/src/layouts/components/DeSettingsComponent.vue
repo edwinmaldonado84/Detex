@@ -23,13 +23,19 @@
                                 :class="!theme ? 'opacity-50' : ''"
                             >
                                 <q-icon left name="dark_mode" />
-                                <div class="text-center">Dark</div>
+                                <div
+                                    class="text-center"
+                                    v-text="$t('buttons.dark')"
+                                />
                             </div>
                         </template>
 
                         <template v-slot:light>
                             <div class="row items-center no-wrap">
-                                <div class="text-center">Light</div>
+                                <div
+                                    class="text-center"
+                                    v-text="$t('buttons.light')"
+                                />
                                 <q-icon right name="light_mode" />
                             </div>
                         </template>
@@ -53,7 +59,10 @@
                                 :class="!tags ? 'opacity-50' : ''"
                             >
                                 <q-icon left name="visibility" />
-                                <div class="text-center">Show</div>
+                                <div
+                                    class="text-center"
+                                    v-text="$t('buttons.show')"
+                                />
                             </div>
                         </template>
 
@@ -62,7 +71,10 @@
                                 class="row items-center no-wrap"
                                 :class="tags ? 'opacity-50' : ''"
                             >
-                                <div class="text-center">Hidde</div>
+                                <div
+                                    class="text-center"
+                                    v-text="$t('buttons.hidde')"
+                                />
                                 <q-icon right name="visibility_off" />
                             </div>
                         </template>

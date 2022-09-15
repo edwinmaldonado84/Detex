@@ -2,7 +2,7 @@
     <div class="q-pa-md">
         <q-table
             v-model:selected="selected"
-            title="Companies"
+            :title="$t(route.meta.title)"
             :rows="rows"
             :columns="columns"
             row-key="name"
@@ -76,12 +76,14 @@
 <script setup>
 import FormCompanyComponent from "./components/FormCompanyComponent.vue";
 import { reactive, ref, onMounted } from "vue";
+import { useRoute } from "vue-router";
 
 const rows = ref([]);
 const filter = ref("");
 const loading = ref(false);
 const selected = ref([]);
 const show = ref(false);
+const route = useRoute();
 
 const columns = [
     {

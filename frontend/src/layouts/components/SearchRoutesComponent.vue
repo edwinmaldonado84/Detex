@@ -13,7 +13,7 @@
                     :options="options"
                     color="white"
                     dense
-                    label="search"
+                    :label="$t('inputs.search')"
                     label-color="white"
                     hide-bottom-space
                     :clearable="true"

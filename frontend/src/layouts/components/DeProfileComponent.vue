@@ -11,7 +11,7 @@
                         <q-icon size="xs" :name="'edit'" />
                         <q-item-section
                             class="q-pl-md"
-                            v-text="'Edit account'"
+                            v-text="$t('buttons.edit_account')"
                         />
                     </q-item>
                     <q-separator />
@@ -22,7 +22,10 @@
                         @click.native="logout"
                     >
                         <q-icon size="xs" :name="'logout'" />
-                        <q-item-section class="q-pl-md" v-text="'Logout'" />
+                        <q-item-section
+                            class="q-pl-md"
+                            v-text="$t('buttons.logout')"
+                        />
                     </q-item>
                     <q-separator />
                 </q-list>
