@@ -26,7 +26,7 @@
             :mini="miniEffect ? miniState : false"
             @mouseover="drawer ? (miniState = false) : ''"
             @mouseout="drawer ? (miniState = true) : ''"
-            :width="200"
+            :width="300"
             :breakpoint="500"
             class="bg-grey-3"
         >

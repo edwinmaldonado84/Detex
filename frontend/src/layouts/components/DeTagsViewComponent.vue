@@ -110,7 +110,7 @@ const filterAffixTags = (routes, basePath = "/") => {
             });
         }
         if (route.children) {
-            const tempTags = this.filterAffixTags(route.children, route.path);
+            const tempTags = filterAffixTags(route.children, route.path);
             if (tempTags.length >= 1) {
                 tags = [...tags, ...tempTags];
             }
