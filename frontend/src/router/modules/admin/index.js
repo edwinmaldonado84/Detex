@@ -1,4 +1,5 @@
 import AdminLayout from "@/layouts/AdminLayout.vue";
+import i18n from "@/plugins/i18n.js";
 
 export default [
     {
@@ -28,7 +29,7 @@ export default [
         hidden: false,
         component: () => import("../../../pages/admin/orders/OrdersPage.vue"),
         meta: {
-            title: "Orders",
+            title: i18n.global.t("pages.orders"),
             noCache: false,
             layout: AdminLayout,
             middleware: "auth",
@@ -44,7 +45,7 @@ export default [
         component: () =>
             import("../../../pages/admin/contacts/ContactPage.vue"),
         meta: {
-            title: "Contact",
+            title: i18n.global.t("pages.contact"),
             noCache: false,
             layout: AdminLayout,
             middleware: "auth",
@@ -59,7 +60,7 @@ export default [
         hidden: false,
         component: () => import("../../../pages/admin/bank/BankPage.vue"),
         meta: {
-            title: "Bank",
+            title: i18n.global.t("pages.bank"),
             noCache: false,
             layout: AdminLayout,
             middleware: "auth",
@@ -74,7 +75,7 @@ export default [
         hidden: false,
         component: () => import("../../../pages/admin/users/UsersPage.vue"),
         meta: {
-            title: "Users",
+            title: i18n.global.t("pages.users"),
             noCache: false,
             layout: AdminLayout,
             middleware: "auth",
@@ -88,7 +89,7 @@ export default [
         name: "SettingsPage",
         redirect: "/settings/groups",
         meta: {
-            title: "Settings",
+            title: i18n.global.t("pages.settings"),
             icon: "settings",
             affix: false,
             separator: true,
@@ -98,9 +99,11 @@ export default [
                 path: "groups",
                 name: "Groups",
                 component: () =>
-                    import("../../../pages/admin/settings/groups/GroupsPage.vue"),
+                    import(
+                        "../../../pages/admin/settings/groups/GroupsPage.vue"
+                    ),
                 meta: {
-                    title: "Groups",
+                    title: i18n.global.t("pages.groups"),
                     noCache: true,
                     layout: AdminLayout,
                     middleware: "auth",
@@ -118,7 +121,7 @@ export default [
                         "../../../pages/admin/settings/companies/CompaniesPage.vue"
                     ),
                 meta: {
-                    title: "Companies",
+                    title: i18n.global.t("pages.companies"),
                     noCache: false,
                     layout: AdminLayout,
                     middleware: "auth",
@@ -131,9 +134,11 @@ export default [
                 path: "charges",
                 name: "Charges",
                 component: () =>
-                    import("../../../pages/admin/settings/charges/ChargesPage.vue"),
+                    import(
+                        "../../../pages/admin/settings/charges/ChargesPage.vue"
+                    ),
                 meta: {
-                    title: "Charges",
+                    title: i18n.global.t("pages.charges"),
                     noCache: true,
                     layout: AdminLayout,
                     middleware: "auth",

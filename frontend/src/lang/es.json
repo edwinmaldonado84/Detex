@@ -30,5 +30,15 @@
         "name": "Nombre",
         "created": "Creación",
         "updated": "Actualización"
+    },
+    "pages":{
+        "orders": "Ordenes",
+        "contact": "Contactos",
+        "bank": "Banco",
+        "users": "Usuarios",
+        "settings": "Configuración",
+        "groups": "Grupos",
+        "companies": "Empresas",
+        "charges": "Cargos"
     }
 }

@@ -30,5 +30,16 @@
         "name": "Name",
         "created": "Created",
         "updated": "Updated"
+    },
+    "pages":{
+        "orders": "Ordenes",
+        "contact": "Contact",
+        "bank": "Bank",
+        "users": "Users",
+        "settings": "Settings",
+        "groups": "Groups",
+        "companies": "Companies",
+        "charges": "Charges"
     }
+
 }
