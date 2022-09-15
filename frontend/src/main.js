@@ -11,6 +11,8 @@ import inputRules from "@/validations/inputsRules";
 
 import "@/plugins";
 import "@/scss/main.scss";
+/* import "@/tailwind.css";
+import "flowbite"; */
 
 const app = createApp(App)
     .use(Quasar, {

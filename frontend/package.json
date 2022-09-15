@@ -15,8 +15,8 @@
     "@vuelidate/validators": "^2.0.0-alpha.31",
     "axios": "^0.27.2",
     "chart.js": "^3.9.1",
+    "flowbite": "^1.5.3",
     "nprogress": "^0.2.0",
-    "postcss": "^8.4.16",
     "quasar": "^2.7.7",
     "unplugin-vue-components": "^0.22.4",
     "vite-plugin-pwa": "^0.12.7",
@@ -32,7 +32,10 @@
   "devDependencies": {
     "@quasar/vite-plugin": "^1.1.1",
     "@vitejs/plugin-vue": "^3.1.0",
+    "autoprefixer": "^10.4.11",
+    "postcss": "^8.4.16",
     "sass": "^1.54.9",
+    "tailwindcss": "^3.1.8",
     "vite": "^3.1.0"
   }
 }
