@@ -7,7 +7,7 @@
                     v-if="item.children"
                     expand-separator
                     group="group"
-                    :label="item.meta.title"
+                    :label="$t(item.meta.title)"
                     :icon="item.meta.icon"
                     :expand-icon-class="{ 'text-primary': model[item.path] }"
                     :header-class="{ 'text-primary': model[item.path] }"
@@ -21,7 +21,7 @@
                             <q-item-section class="q-pl-xl" avatar>
                                 <q-icon :name="subItem.meta.icon" />
                             </q-item-section>
-                            <q-item-section v-text="subItem.meta.title" />
+                            <q-item-section v-text="$t(subItem.meta.title)" />
                         </q-item>
 
                         <q-separator
@@ -35,7 +35,7 @@
                     <q-item-section avatar>
                         <q-icon :name="item.meta.icon" />
                     </q-item-section>
-                    <q-item-section v-text="item.meta.title" />
+                    <q-item-section v-text="$t(item.meta.title)" />
                 </q-item>
 
                 <q-separator

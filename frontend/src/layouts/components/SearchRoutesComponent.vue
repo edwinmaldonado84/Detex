@@ -52,6 +52,7 @@
 import { reactive, ref, onMounted, computed, watch } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 
 const store = useStore();
 const router = useRouter();
@@ -60,6 +61,7 @@ const show = ref(false);
 const options = ref();
 const headerSearchSelect = ref(null);
 const items = reactive({});
+const { t } = useI18n();
 
 const routes = computed(() => {
     return store.getters.permission_routes;
@@ -77,6 +79,13 @@ watch(model, (val) => {
     }
 });
 
+watch(
+    () => store.getters.language,
+    async () => {
+        items.routes = generateRoutes(routes.value);
+    }
+);
+
 const filterFn = (val, update, abort) => {
     if (val.length < 2) {
         abort();
@@ -85,20 +94,11 @@ const filterFn = (val, update, abort) => {
     update(() => {
         const needle = val.toLowerCase();
 
-        options.value = items.routes.filter(function search(row) {
-            // name the function so we can use recursion (thus we can't use an arrow function)
-            return Object.keys(row).some((key) => {
-                // ...
-
-                if (typeof row[key] === "string") {
-                    // if the current property is a string
-                    return row[key].toLowerCase().indexOf(needle) > -1; // then check if it contains the search string
-                } else if (row[key] && typeof row[key] === "object") {
-                    // oterwise, if it's an object
-                    return search(row[key]); // do a recursive check
-                }
-
-                return false; // return false for any other type (not really necessary as undefined will be returned implicitly)
+        options.value = items.routes.filter((item) => {
+            // return v.label.includes(val);
+            return item.label.some((v) => {
+                // return t(v).toLowerCase().includes(needle);
+                return v.toLowerCase().includes(needle);
             });
         });
     });
@@ -132,7 +132,7 @@ const generateRoutes = (routes, basePath = null, prefixTitle = []) => {
             if (router.redirect !== "noRedirect") {
                 // only push the routes with title
                 // special case: need to exclude parent router without redirect
-                data.label = [...data.label, router.meta.title];
+                data.label = [...data.label, t(router.meta.title)];
 
                 if (router.redirect !== "noRedirect") {
                     // only push the routes with title

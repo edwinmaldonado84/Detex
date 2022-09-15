@@ -32,6 +32,7 @@
         "updated": "Actualización"
     },
     "pages":{
+        "dashboard": "Dashboard",
         "orders": "Ordenes",
         "contact": "Contactos",
         "bank": "Banco",

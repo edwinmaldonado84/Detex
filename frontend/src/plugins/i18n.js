@@ -3,9 +3,8 @@ import messages from "@intlify/vite-plugin-vue-i18n/messages";
 import helpers from "@/helpers";
 
 const i18n = createI18n({
-    // locale: helpers.getLanguageBrowser(),
-    locale: "es",
-    fallbackLocale: "es",
+    locale: helpers.getLanguageBrowser(),
+    fallbackLocale: "en-US",
     legacy: true,
     globalInjection: true,
     messages,
