@@ -27,47 +27,40 @@
 </template>
 
 <script setup>
-import { onMounted, watch } from "vue";
+import { onMounted, watch, computed, reactive } from "vue";
 import { useI18n } from "vue-i18n";
 import { useStore } from "vuex";
 import { useQuasar } from "quasar";
-import esLang from "quasar/lang/es";
-import enLang from "quasar/lang/en-US";
+const langList = import.meta.glob("../../node_modules/quasar/lang/*.mjs", {
+    eager: true,
+});
 
 const store = useStore();
 const $q = useQuasar();
+const Languages = reactive(langList);
 const { locale } = useI18n({
     useScope: "global",
 });
 
-onMounted(() => {
+onMounted(async () => {
     locale.value = store.getters.language;
-    $q.lang.set(locale.value == "es" ? esLang : enLang);
+    changeLanguage(store.getters.language);
 });
 
 watch(locale, async (value) => {
     locale.value = value;
-    console.log(
-        "🚀 ~ file: DeLanguageComponent.vue ~ line 49 ~ watch ~ value",
-        value
-    );
-
-    $q.lang.set(value == "es" ? esLang : enLang);
-    // $q.lang.set("es");
-    /*    import("quasar/lang/" + value).then((language) => {
-        console.log(
-            "🚀 ~ file: DeLanguageComponent.vue ~ line 50 ~ awaitimport ~ language.default",
-            language.default
-        );
-        $q.lang.set(language.default);
-    }); */
-    $q.lang.getLocale();
-
+    changeLanguage(value);
     store.dispatch("lang/setLanguage", value);
 });
+
+const changeLanguage = async (val) => {
+    $q.lang.set(
+        Languages["../../node_modules/quasar/lang/" + val + ".mjs"].default
+    );
+};
 </script>
 <style lang="scss" scoped>
-.flag_en {
+.flag_en-US {
     background: url("@/assets/img/flags/usa.png") no-repeat center center / 100%;
 }
 .flag_es {
