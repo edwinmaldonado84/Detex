@@ -36,6 +36,7 @@ Route::group(['middleware' => [
     Route::apiResource('company', App\Http\Controllers\Api\CompanyController::class);
     Route::apiResource('charge', App\Http\Controllers\Api\ChargeController::class);
     Route::apiResource('contact', App\Http\Controllers\Api\ContactController::class);
+    Route::apiResource('user', App\Http\Controllers\Api\UserController::class);
 });
 
 

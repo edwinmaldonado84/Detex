@@ -2,14 +2,14 @@
 
 namespace App\Http\Requests;
 
+use Spatie\Permission\Models\Role;
 use App\Exceptions\InvalidException;
-use App\Models\Group;
 use App\Services\ApiPermissionsService;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class CompanyRequest extends FormRequest
+class UserRequest extends FormRequest
 {
 
     /**
@@ -21,11 +21,11 @@ class CompanyRequest extends FormRequest
     {
         $publics = [];
         $permitions = [
-            'GET' => 'company_read',
-            'POST' => 'company_create',
-            'PUT' => 'company_edit',
-            'PATCH' => 'company_edit',
-            'DELETE' => 'company_delete',
+            'GET' => 'user_read',
+            'POST' => 'user_create',
+            'PUT' => 'user_edit',
+            'PATCH' => 'user_edit',
+            'DELETE' => 'user_delete',
         ];
 
         $result = new ApiPermissionsService($this->user());
@@ -40,23 +40,19 @@ class CompanyRequest extends FormRequest
 
             case 'POST': {
                     return [
-                        'name' => '',
-                        'business_name' => 'required|unique:companies,business_name',
-                        'rfc' => 'required|unique:companies,rfc',
-                        'webpage' => '',
-                        'observations' => '',
-                        'group_id' => 'required',
+                        'name' => 'required',
+                        'email' => 'required|unique:users,email',
+                        'password' => 'required',
+                        'role' => 'required',
                     ];
                 }
-
+                //TODO: check not udate password
             case 'PATCH': {
                     return [
-                        'name' => '',
-                        'business_name' => 'unique:companies,business_name,' . $this->route('company'),
-                        'rfc' => 'unique:companies,rfc,' . $this->route('company'),
-                        'webpage' => '',
-                        'observations' => '',
-                        'group_id' => 'required',
+                        'name' => 'required',
+                        'email' => 'required|unique:users,name,' . $this->route('user'),
+                        'password' => '',
+                        'role' => 'required',
                     ];
                 }
 
@@ -75,11 +71,11 @@ class CompanyRequest extends FormRequest
     public function messages()
     {
         return [
-            'business_name.required' => 'La :attribute es obligatoria.',
-            'business_name.unique' => 'La :attribute ya existe.',
-            'rfc.required' => 'El :attribute es obligatorio.',
-            'rfc.unique' => 'El :attribute ya existe.',
-            'group_id.required' => 'La :attribute es obligatoria.',
+            'name.required' => 'El :attribute es obligatorio.',
+            'email.required' => 'El :attribute es obligatorio.',
+            'email.unique' => 'El :attribute ya existen.',
+            'password.required' => 'La :attribute es obligatoria.',
+            'role_id.required' => 'El :attribute es obligatorio.',
         ];
     }
 
@@ -87,19 +83,20 @@ class CompanyRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'razón social',
-            'rfc' => 'RCF',
-            'group_id' => 'agrupación',
+            'name' => 'nombre',
+            'email' => 'correo electrónico',
+            'password' => 'contraseña',
+            'role_id' => 'role',
         ];
     }
 
     public function validationData()
     {
         if ($this->route()->getActionMethod() == 'store' or $this->route()->getActionMethod() == 'update') {
-            if (!Group::where('id', '=', $this->group_id)->exists()) {
+            if (!Role::where('name', '=', $this->role)->exists()) {
 
 
-                throw InvalidException::forInvalid('La agrupación no existe.');
+                throw InvalidException::forInvalid('El role no existe.');
             }
         }
         return array_merge($this->all());

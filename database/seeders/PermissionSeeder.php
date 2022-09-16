@@ -14,7 +14,7 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
-        $modules = ['group', 'company', 'contact'];
+        $modules = ['group', 'company', 'contact', 'charge', 'user'];
         $types = ['read', 'create', 'edit', 'delete'];
 
         foreach ($modules as $key => $moduleValue) {
