@@ -17,7 +17,7 @@ class GroupRepository extends BaseRepository
 
         return $this->get($params, [], function ($q) use ($params) {
             $q->ofId($params['id'] ?? '');
-            $q->ofName($params['name'] ?? '');
+            $q->ofSearch($params['search'] ?? '');
 
             $q->orderBy($params['sortBy'] ?? 'id', $params['sortType'] ?? 'asc');
 

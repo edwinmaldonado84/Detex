@@ -10,10 +10,10 @@ trait GroupTrait
         return $query->where('id', $id);
     }
 
-    public function scopeOfName($query, $name)
+    public function scopeOfSearch($query, $search)
     {
-        if ($name === null || $name === '') return false;
+        if ($search === null || $search === '') return false;
 
-        return $query->where('name', 'LIKE', "%{$name}%");
+        return $query->where('name', 'LIKE', "%{$search}%");
     }
 }

@@ -1,5 +1,5 @@
 <template>
-    <div class="q-pa-md">
+    <div class="tw-p-5">
         <q-table
             v-model:selected="selected"
             :title="$t(route.meta.title)"
@@ -12,25 +12,27 @@
             :filter="filter"
             @request="onRequest"
             class="my-sticky-header-table"
-            :title-class="'text-h3 text-primary text-weight-bolder'"
+            :title-class="'tw-text-4xl tw-text-primary text-weight-bolder'"
             color="black"
             :card-style="{ padding: '20px' }"
-            table-header-class="bg-primary text-white text-h4"
-            card-style="{ padding: '20px' }"
         >
             <template v-slot:header="props">
-                <q-tr :props="props" class="bg-primary text-white text-h4">
+                <q-tr :props="props" class="tw-bg-primary">
                     <q-th
                         v-for="col in props.cols"
                         :key="col.name"
                         :props="props"
-                        v-text="$t(col.label)"
-                    />
+                    >
+                        <span
+                            class="tw-font-bold tw-text-sm text-white"
+                            v-text="$t(col.label)"
+                        />
+                    </q-th>
                 </q-tr>
             </template>
 
             <template v-slot:top-right>
-                <div class="q-pr-lg">
+                <div class="tw-pr-10">
                     <q-btn
                         outline
                         color="primary"
@@ -41,9 +43,9 @@
                         @click="(show = true), (datas = [])"
                     />
                 </div>
+
                 <q-input
                     debounce="500"
-                    dense
                     v-model="filter"
                     :label="$t('inputs.search')"
                     hide-hint
@@ -60,18 +62,18 @@
             </template>
 
             <template v-slot:no-data="{ icon, message, filter }">
-                <div class="full-width row flex-center q-gutter-sm q-py-lg">
+                <div class="tw-w-full row flex-center tw-py-10">
                     <q-icon
                         v-if="!loading"
                         size="3em"
                         name="warning"
-                        class="text-negative"
+                        class="tw-text-negative"
                     />
                     <q-icon v-else size="3em" name="find_in_page" />
                     <span
-                        class="text-h5"
+                        class="tw-text-xl tw-pl-2"
                         v-text="message"
-                        :class="{ 'text-negative': !loading }"
+                        :class="{ 'tw-text-negative': !loading }"
                     />
                 </div>
             </template>
