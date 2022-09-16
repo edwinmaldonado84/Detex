@@ -1,5 +1,5 @@
 <template>
-    <div class="q-pa-md">
+    <div class="tw-p-5">
         <q-table
             v-model:selected="selected"
             :title="$t(route.meta.title)"
@@ -12,35 +12,46 @@
             :filter="filter"
             @request="onRequest"
             class="my-sticky-header-table"
-            :title-class="'text-h3 text-primary text-weight-bolder'"
+            :title-class="'tw-text-4xl tw-text-primary text-weight-bolder'"
             color="black"
-            :card-style="{ padding: '20px' }"
-            table-header-class="bg-primary text-white text-h4"
-            card-style="{ padding: '20px' }"
+            card-class="tw-p-4"
         >
+            <template v-slot:header="props">
+                <q-tr :props="props" class="tw-bg-primary">
+                    <q-th
+                        v-for="col in props.cols"
+                        :key="col.name"
+                        :props="props"
+                    >
+                        <span
+                            class="tw-font-bold tw-text-sm text-white"
+                            v-text="$t(col.label)"
+                        />
+                    </q-th>
+                </q-tr>
+            </template>
+
             <template v-slot:top-right>
-                <div class="q-pr-lg">
+                <div class="tw-pr-10">
                     <q-btn
                         outline
                         color="primary"
                         class="text-capitalize"
-                        label="New"
+                        :label="$t('buttons.add')"
                         ripple
                         style="width: 100px"
                         @click="(show = true), (datas = [])"
                     />
                 </div>
+
                 <q-input
                     debounce="500"
-                    dense
                     v-model="filter"
-                    label="Search"
+                    :label="$t('inputs.search')"
                     hide-hint
                     clearable
                     autogrow
-                    :input-style="{ fontSize: '1.1rem', width: '400px' }"
-                    label-color="primary"
-                    color="primary"
+                    class="border-b-1 border-gray-200"
                 >
                     <template v-slot:prepend>
                         <q-icon size="1.2em" color="primary" name="search" />
@@ -49,18 +60,18 @@
             </template>
 
             <template v-slot:no-data="{ icon, message, filter }">
-                <div class="full-width row flex-center q-gutter-sm q-py-lg">
+                <div class="tw-w-full row flex-center tw-py-10">
                     <q-icon
                         v-if="!loading"
                         size="3em"
                         name="warning"
-                        class="text-negative"
+                        class="tw-text-negative"
                     />
                     <q-icon v-else size="3em" name="find_in_page" />
                     <span
-                        class="text-h5"
+                        class="tw-text-xl tw-pl-"
                         v-text="message"
-                        :class="{ 'text-negative': !loading }"
+                        :class="{ 'tw-text-negative': !loading }"
                     />
                 </div>
             </template>
@@ -87,40 +98,47 @@ const route = useRoute();
 
 const columns = [
     {
+        name: "group",
+        label: "tables.group",
+        align: "left",
+        field: "group",
+        sortable: true,
+    },
+    {
         name: "name",
-        label: "Name",
+        label: "tables.name",
         required: true,
         align: "left",
         field: "name",
         sortable: true,
     },
     {
+        name: "business_name",
+        label: "tables.business_name",
+        align: "left",
+        field: "business_name",
+        sortable: true,
+    },
+    {
         name: "Rfc",
-        label: "Rfc",
+        label: "tables.rfc",
         align: "left",
         field: "rfc",
         sortable: true,
     },
     {
-        name: "Phone",
-        label: "Phone",
-        align: "center",
-        field: "phone",
+        name: "webpage",
+        label: "tables.webpage",
+        align: "left",
+        field: "webpage",
         sortable: true,
     },
     {
-        name: "Address",
-        label: "Address",
+        name: "observations",
+        label: "tables.observations",
         align: "left",
-        field: "address",
+        field: "observations",
         sortable: false,
-    },
-    {
-        name: "Owner",
-        label: "Owner",
-        align: "left",
-        field: "owner",
-        sortable: true,
     },
 ];
 const pagination = ref({

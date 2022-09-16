@@ -14,7 +14,7 @@
             class="my-sticky-header-table"
             :title-class="'tw-text-4xl tw-text-primary text-weight-bolder'"
             color="black"
-            :card-style="{ padding: '20px' }"
+            card-class="tw-p-4"
         >
             <template v-slot:header="props">
                 <q-tr :props="props" class="tw-bg-primary">
@@ -51,9 +51,7 @@
                     hide-hint
                     clearable
                     autogrow
-                    :input-style="{ fontSize: '1.1rem', width: '400px' }"
-                    label-color="primary"
-                    color="primary"
+                    class="border-b-1 border-gray-200"
                 >
                     <template v-slot:prepend>
                         <q-icon size="1.2em" color="primary" name="search" />
@@ -71,7 +69,7 @@
                     />
                     <q-icon v-else size="3em" name="find_in_page" />
                     <span
-                        class="tw-text-xl tw-pl-2"
+                        class="tw-text-xl tw-pl-"
                         v-text="message"
                         :class="{ 'tw-text-negative': !loading }"
                     />

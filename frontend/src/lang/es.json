@@ -45,6 +45,11 @@
     "tables": {
         "created": "Creación",
         "name": "Nombre",
-        "updated": "Actualización"
+        "updated": "Actualización",
+        "business_name": "Razón social",
+        "rfc": "RFC",
+        "webpage": "Pagina web",
+        "observations": "Observaciones",
+        "group": "Agrupación"
     }
 }

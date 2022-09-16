@@ -1,11 +1,16 @@
 <template>
-    <h1 v-text="$t(route.meta.title)" />
+    <div class="flex">
+        <h1 v-text="$t(route.meta.title)" />
 
-    <input
-        type="text"
-        class="w-96 px-3 py-2 border border-slate-600 rounded-xl focus:outline-0"
-    />
-    <input type="text" />
+        <div class="tw-bg-black tw-h-10">
+            <q-input
+                v-model="text"
+                label="Label"
+                dense
+                class="tw-border-b-2 focus:tw-border-b-red-500"
+            />
+        </div>
+    </div>
 </template>
 
 <script setup>

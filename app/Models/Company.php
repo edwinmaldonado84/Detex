@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Group;
 use App\Traits\CompanyTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -15,4 +16,10 @@ class Company extends Authenticatable
     protected $fillable = ['name', 'business_name', 'rfc', 'webpage', 'observations', 'group_id'];
     protected $appends = [];
     protected $hidden = ['deleted_at'];
+
+
+    public function group()
+    {
+        return $this->hasOne(Group::class, 'id', 'group_id')->select(['id', 'name']);
+    }
 }
