@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
+use App\Models\Company;
+use App\Exceptions\InvalidException;
 use App\Services\ApiPermissionsService;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 class CompanyRequest extends FormRequest
@@ -89,6 +91,18 @@ class CompanyRequest extends FormRequest
             'rfc' => 'RCF',
             'group_id' => 'agrupación',
         ];
+    }
+
+     public function validationData()
+    {
+        if ($this->route()->getActionMethod() != 'delete' ) {
+            if (!Company::where('id', '=', $this->company_id)->exists()) {
+
+
+                throw InvalidException::forInvalid('El compania no existe.');
+            }
+        }
+        return array_merge($this->all());
     }
 
 
