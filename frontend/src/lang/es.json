@@ -50,6 +50,7 @@
         "rfc": "RFC",
         "webpage": "Pagina web",
         "observations": "Observaciones",
-        "group": "Agrupación"
+        "group": "Agrupación",
+        "description": "Descripción"
     }
 }

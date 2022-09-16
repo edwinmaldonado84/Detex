@@ -5,30 +5,30 @@ namespace App\Http\Controllers\Api;
 use App\Traits\ApiResponse;
 use App\Exceptions\InvalidException;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ContactRequest;
-use App\Repositories\contactRepository;
+use App\Http\Requests\ChargeRequest;
+use App\Repositories\ChargeRepository;
 
-class ContactController extends Controller
+class ChargeController extends Controller
 {
     use ApiResponse;
-    private $contactRepository;
+    private $chargeRepository;
 
-    public function __construct(ContactRepository $contactRepository)
+    public function __construct(ChargeRepository $chargeRepository)
     {
-        $this->contactRepository = $contactRepository;
+        $this->chargeRepository = $chargeRepository;
     }
 
-    public function index(ContactRequest $request)
+    public function index(ChargeRequest $request)
     {
 
-        $list = $this->contactRepository->list($request->all());
+        $list = $this->chargeRepository->list($request->all());
 
         return $this->successResponse($list, 'List', 200);
     }
 
-    public function store(ContactRequest $request)
+    public function store(ChargeRequest $request)
     {
-        $create = $this->contactRepository->create($request->all());
+        $create = $this->chargeRepository->create($request->all());
 
         if (!$create) throw InvalidException::forInvalid("Falló al Crear");
 
@@ -36,9 +36,9 @@ class ContactController extends Controller
     }
 
 
-    public function show(ContactRequest $request, $id)
+    public function show(ChargeRequest $request, $id)
     {
-        $search = $this->contactRepository->find($id);
+        $search = $this->chargeRepository->find($id);
 
         if (!$search) throw InvalidException::forInvalid("No se encontro.");
 
@@ -46,12 +46,12 @@ class ContactController extends Controller
     }
 
 
-    public function update(ContactRequest $request, $id)
+    public function update(ChargeRequest $request, $id)
     {
 
         $payload = $request->all();
 
-        $updated = $this->contactRepository->update($id, $payload);
+        $updated = $this->chargeRepository->update($id, $payload);
 
         if (!$updated) throw InvalidException::forInvalid("Falló al Actualizar");
 
@@ -59,12 +59,12 @@ class ContactController extends Controller
     }
 
 
-    public function destroy(ContactRequest $request, $id)
+    public function destroy(ChargeRequest $request, $id)
     {
-        if (!$this->contactRepository->exist($id)) throw InvalidException::forInvalid("No existe");
+        if (!$this->chargeRepository->exist($id)) throw InvalidException::forInvalid("No existe");
 
         try {
-            $this->contactRepository->delete($id);
+            $this->chargeRepository->delete($id);
         } catch (\Exception $e) {
             throw InvalidException::forInvalid("No se puede eliminar la clase, hasta que elimine a todos los clientes de la lista de asistencia.");
         }

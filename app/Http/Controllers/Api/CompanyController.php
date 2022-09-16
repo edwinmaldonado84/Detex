@@ -64,6 +64,7 @@ class CompanyController extends Controller
 
     public function destroy(CompanyRequest $request, $id)
     {
+        if (!$this->companyRepository->exist($id)) throw InvalidException::forInvalid("No existe");
 
         try {
             $this->companyRepository->delete($id);

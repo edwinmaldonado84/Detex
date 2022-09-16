@@ -99,6 +99,14 @@ const columns = [
         sortable: true,
     },
     {
+        name: "name",
+        label: "tables.description",
+        required: true,
+        align: "left",
+        field: "description",
+        sortable: true,
+    },
+    {
         name: "created_at",
         label: "tables.created",
         align: "center",
@@ -143,7 +151,7 @@ const onRequest = async (props) => {
         per_page: rowsPerPage,
     };
     const { data } = await axios
-        .get("/api/group", {
+        .get("/api/charge", {
             params: params,
         })
         .catch(function (error) {});

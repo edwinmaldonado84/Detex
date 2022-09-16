@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             // CompanySeeder::class,
             PermissionSeeder::class,
             RoleSeeder::class,
+            ChargeSeeder::class,
         ]);
     }
 }
