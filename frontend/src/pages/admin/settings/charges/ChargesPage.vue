@@ -153,7 +153,7 @@ const onRequest = async (props) => {
     rows.value = data.data.data;
     pagination.value.rowsNumber = data.data.total;
     pagination.value.page = data.data.current_page;
-    pagination.value.rowsPerPage = pagination.value.rowsPerPage;
+    pagination.value.rowsPerPage = rowsPerPage;
     pagination.value.sortBy = sortBy;
     pagination.value.descending = descending;
 

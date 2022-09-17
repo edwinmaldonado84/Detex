@@ -1,9 +1,16 @@
 <template>
-    <q-dialog v-model="show" style="width: 700px; max-width: 80vw">
-        <q-card class="tw-w-full">
-            <q-card-section class="flex tw-items-center">
-                <q-icon size="md" class="tw-text-primary tw-pr-2" name="lock" />
-                <div class="tw-text-2xl" v-text="$t('tables.permissions')" />
+    <q-dialog v-model="show" transition-show="rotate" transition-hide="rotate">
+        <q-card style="width: 500px; max-width: 90vw">
+            <q-card-section
+                class="flex items-center q-py-sm bg-primary q-px-lg"
+            >
+                <q-icon size="md" class="text-white tw-pr-2" name="lock" />
+                <div
+                    class="tw-text-2xl text-white"
+                    v-text="$t('tables.permissions')"
+                />
+                <q-space />
+                <q-btn outline round color="white" icon="close" v-close-popup />
             </q-card-section>
 
             <q-separator />

@@ -174,9 +174,6 @@ const onRequest = async (props) => {
     pagination.value.sortBy = sortBy;
     pagination.value.descending = descending;
 
-    // pagination.value.sortBy = sortBy;
-    // pagination.value.descending = descending;
-
     loading.value = false;
 };
 

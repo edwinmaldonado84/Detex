@@ -70,6 +70,11 @@
                                     (modalPermissions.datas = props.value)
                             "
                         >
+                            <q-badge
+                                color="positive"
+                                floating
+                                v-text="props.value.length"
+                            />
                             <q-icon left name="lock" />
                             <div v-text="$t('buttons.show')" />
                         </q-btn>
