@@ -5,7 +5,7 @@
             :title="$t(route.meta.title)"
             :rows="rows"
             :columns="columns"
-            row-key="name"
+            row-key="id"
             @row-dblclick="onRowClick"
             v-model:pagination="pagination"
             :loading="loading"
@@ -192,17 +192,3 @@ function onRowClick(evt, row) {
     show.value = true;
 }
 </script>
-<style lang="sass">
-.my-sticky-header-table
-    max-height: 86vh
-    thead tr th
-        position: sticky
-        z-index: 1
-        font-size: 1.1rem !important
-    thead tr:first-child th
-        top: 0
-    .q-table__linear-progress
-        height: 4px
-.selected
-    background-color: $accent
-</style>

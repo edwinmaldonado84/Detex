@@ -1,11 +1,10 @@
 <template>
     <div class="tw-p-5">
         <q-table
-            v-model:selected="selected"
             :title="$t(route.meta.title)"
             :rows="rows"
             :columns="columns"
-            row-key="name"
+            row-key="id"
             @row-dblclick="onRowClick"
             v-model:pagination="pagination"
             :loading="loading"
@@ -179,7 +178,6 @@ const pagination = ref({
 });
 
 onMounted(async () => {
-    // get initial data from server (1st page)
     onRequest({
         pagination: pagination.value,
         filter: undefined,
@@ -210,9 +208,6 @@ const onRequest = async (props) => {
     pagination.value.sortBy = sortBy;
     pagination.value.descending = descending;
 
-    // pagination.value.sortBy = sortBy;
-    // pagination.value.descending = descending;
-
     loading.value = false;
 };
 
@@ -220,20 +215,4 @@ function onRowClick(evt, row) {
     selected.value.push(row);
     show.value = true;
 }
-
-const showPermissionsHandle = (val) => {};
 </script>
-<style lang="sass">
-.my-sticky-header-table
-    max-height: 86vh
-    thead tr th
-        position: sticky
-        z-index: 1
-        font-size: 1.1rem !important
-    thead tr:first-child th
-        top: 0
-    .q-table__linear-progress
-        height: 4px
-.selected
-    background-color: $accent
-</style>

@@ -1,12 +1,10 @@
 <template>
     <div class="tw-p-5">
         <q-table
-            v-model:selected="selected"
             :title="$t(route.meta.title)"
             :rows="rows"
             :columns="columns"
-            row-key="name"
-            @row-dblclick="onRowClick"
+            row-key="id"
             v-model:pagination="pagination"
             :loading="loading"
             :filter="filter"
@@ -40,7 +38,6 @@
                         :label="$t('buttons.add')"
                         ripple
                         style="width: 100px"
-                        @click="(show = true), (datas = [])"
                     />
                 </div>
 
@@ -85,8 +82,6 @@ import { useRoute } from "vue-router";
 const rows = ref([]);
 const filter = ref("");
 const loading = ref(false);
-const selected = ref([]);
-const show = ref(false);
 const route = useRoute();
 
 const columns = [
@@ -99,7 +94,7 @@ const columns = [
         sortable: true,
     },
     {
-        name: "name",
+        name: "description",
         label: "tables.description",
         required: true,
         align: "left",
@@ -132,7 +127,6 @@ const pagination = ref({
 });
 
 onMounted(async () => {
-    // get initial data from server (1st page)
     onRequest({
         pagination: pagination.value,
         filter: undefined,
@@ -163,28 +157,6 @@ const onRequest = async (props) => {
     pagination.value.sortBy = sortBy;
     pagination.value.descending = descending;
 
-    // pagination.value.sortBy = sortBy;
-    // pagination.value.descending = descending;
-
     loading.value = false;
 };
-
-function onRowClick(evt, row) {
-    selected.value.push(row);
-    show.value = true;
-}
 </script>
-<style lang="sass">
-.my-sticky-header-table
-    max-height: 86vh
-    thead tr th
-        position: sticky
-        z-index: 1
-        font-size: 1.1rem !important
-    thead tr:first-child th
-        top: 0
-    .q-table__linear-progress
-        height: 4px
-.selected
-    background-color: $accent
-</style>
