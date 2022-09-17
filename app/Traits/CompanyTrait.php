@@ -18,5 +18,6 @@ trait CompanyTrait
             ->orWhere('business_name', 'LIKE', "%{$search}%")
             ->orWhere('rfc', 'LIKE', "%{$search}%")
             ->orWhere('webpage', 'LIKE', "%{$search}%");
+        // ->orWhere('groups.name', 'LIKE', "%{$search}%");
     }
 }

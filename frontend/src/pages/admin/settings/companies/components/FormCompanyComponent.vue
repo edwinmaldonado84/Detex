@@ -24,6 +24,7 @@
                     <q-input
                         v-model="form.name"
                         clearable
+                        autogrow
                         type="text"
                         :label="$t('inputs.name')"
                         :rules="[
@@ -39,6 +40,7 @@
                     <q-input
                         v-model="form.owner"
                         clearable
+                        autogrow
                         type="text"
                         :label="$t('inputs.owner')"
                     >
@@ -50,6 +52,7 @@
                     <q-input
                         v-model="form.rfc"
                         clearable
+                        autogrow
                         type="text"
                         :label="$t('inputs.rfc')"
                         :rules="[true]"
@@ -62,6 +65,7 @@
                     <q-input
                         v-model="form.phone"
                         clearable
+                        autogrow
                         type="phone"
                         :label="$t('inputs.phone')"
                         :rules="[true]"
@@ -74,6 +78,7 @@
                     <q-input
                         v-model="form.address"
                         clearable
+                        autogrow
                         type="text"
                         :label="$t('inputs.address')"
                         :rules="[true]"

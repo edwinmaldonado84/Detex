@@ -98,43 +98,36 @@ const route = useRoute();
 
 const columns = [
     {
-        name: "group",
+        name: "groups.name",
         label: "tables.group",
         align: "left",
         field: "group",
         sortable: true,
     },
     {
-        name: "name",
-        label: "tables.name",
-        required: true,
-        align: "left",
-        field: "name",
-        sortable: true,
-    },
-    {
-        name: "business_name",
+        name: "companies.business_name",
         label: "tables.business_name",
+        required: true,
         align: "left",
         field: "business_name",
         sortable: true,
     },
     {
-        name: "Rfc",
+        name: "companies.rfc",
         label: "tables.rfc",
         align: "left",
         field: "rfc",
         sortable: true,
     },
     {
-        name: "webpage",
+        name: "companies.webpage",
         label: "tables.webpage",
         align: "left",
         field: "webpage",
         sortable: true,
     },
     {
-        name: "observations",
+        name: "companies.observations",
         label: "tables.observations",
         align: "left",
         field: "observations",
@@ -142,7 +135,7 @@ const columns = [
     },
 ];
 const pagination = ref({
-    sortBy: "id",
+    sortBy: "companies.id",
     descending: false,
     page: 1,
     rowsPerPage: 15,
@@ -177,7 +170,7 @@ const onRequest = async (props) => {
     rows.value = data.data.data;
     pagination.value.rowsNumber = data.data.total;
     pagination.value.page = data.data.current_page;
-    pagination.value.rowsPerPage = pagination.value.rowsPerPage;
+    pagination.value.rowsPerPage = rowsPerPage;
     pagination.value.sortBy = sortBy;
     pagination.value.descending = descending;
 
@@ -188,6 +181,10 @@ const onRequest = async (props) => {
 };
 
 function onRowClick(evt, row) {
+    console.log(
+        "🚀 ~ file: CompaniesPage.vue ~ line 184 ~ onRowClick ~ row",
+        row
+    );
     selected.value.push(row);
     show.value = true;
 }
