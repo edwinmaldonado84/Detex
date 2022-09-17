@@ -16,7 +16,8 @@
         "invalid_email": "Invalid Email",
         "min_password": "It should contain at least 8 characters",
         "required": "Required.",
-        "something_is_wrong": "Something is wrong!"
+        "something_is_wrong": "Something is wrong!",
+        "there_are_not_permissions": "There are not permissions!"
     },
     "home": "Home",
     "inputs": {
@@ -42,14 +43,17 @@
         "users": "Users"
     },
     "tables": {
-        "created": "Created",
-        "name": "Name",
-        "updated": "Updated",
         "business_name": "Business name",
-        "rfc": "RFC",
-        "webpage": "Webpage",
-        "observations": "Observations",
+        "created": "Created",
+        "description": "Description",
         "group": "Group",
-        "description": "Description"
+        "name": "Name",
+        "observations": "Observations",
+        "permissions": "Permissions",
+        "rfc": "RFC",
+        "role": "Role",
+        "updated": "Updated",
+        "webpage": "Webpage",
+        "email": "Email"
     }
 }

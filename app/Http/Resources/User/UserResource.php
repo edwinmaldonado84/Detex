@@ -22,6 +22,8 @@ class UserResource extends ResourceCollection
                     'email' => $item->email,
                     'role' => $item->getRoleNames()->first(),
                     'permissions' => $item->getPermissionsViaRoles()->pluck('name'),
+                    'created_at' => $item->created_at,
+                    'updated_at' => $item->updated_at,
                 ];
             }),
             'total' => $this->total(),

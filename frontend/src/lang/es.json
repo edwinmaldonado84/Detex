@@ -17,7 +17,8 @@
         "invalid_email": "Correo electronico invalido.",
         "min_password": "Deberia contener almenos 8 caracteres.",
         "required": "Requerido.",
-        "something_is_wrong": "Algo salio mal!"
+        "something_is_wrong": "Algo salio mal!",
+        "there_are_not_permissions": "No hay permisos!"
     },
     "home": "Casa",
     "inputs": {
@@ -43,14 +44,17 @@
         "users": "Usuarios"
     },
     "tables": {
-        "created": "Creación",
-        "name": "Nombre",
-        "updated": "Actualización",
         "business_name": "Razón social",
-        "rfc": "RFC",
-        "webpage": "Pagina web",
-        "observations": "Observaciones",
+        "created": "Creación",
+        "description": "Descripción",
         "group": "Agrupación",
-        "description": "Descripción"
+        "name": "Nombre",
+        "observations": "Observaciones",
+        "permissions": "Permisos",
+        "rfc": "RFC",
+        "role": "Role",
+        "updated": "Actualización",
+        "webpage": "Pagina web",
+        "email": "Correo electrónico"
     }
 }
