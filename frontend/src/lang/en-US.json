@@ -57,6 +57,9 @@
         "email": "Email",
         "phones": "Phones",
         "emails": "Emails",
-        "last_name": "Lastname"
+        "last_name": "Lastname",
+        "groups": "Groups",
+        "companies": "Companies",
+        "charges": "Charges"
     }
 }

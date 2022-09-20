@@ -26,4 +26,19 @@ class Contact extends Model
     {
         return $this->hasMany(Email::class);
     }
+
+    public function groups()
+    {
+        return $this->belongsToMany(Group::class, 'group_contact');
+    }
+
+    public function companies()
+    {
+        return $this->belongsToMany(Company::class, 'group_contact');
+    }
+
+    public function charges()
+    {
+        return $this->belongsToMany(Charge::class, 'group_contact');
+    }
 }

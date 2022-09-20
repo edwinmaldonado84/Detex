@@ -58,6 +58,9 @@
         "email": "Correo electrónico",
         "phones": "Teléfonos",
         "emails": "Correos electrónicos",
-        "last_name": "Apellido"
+        "last_name": "Apellido",
+        "groups": "Agrupaciones",
+        "companies": "Empresas",
+        "charges": "Cargos"
     }
 }

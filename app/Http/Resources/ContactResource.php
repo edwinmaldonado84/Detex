@@ -18,6 +18,9 @@ class ContactResource extends ResourceCollection
                     'observations' => $item->observations,
                     'phones' => $item->phones,
                     'emails' => $item->emails,
+                    'groups' => $item->groups,
+                    'companies' => $item->companies,
+                    'charges' => $item->charges,
                     'created_at' => $item->created_at,
                     'updated_at' => $item->updated_at,
                 ];

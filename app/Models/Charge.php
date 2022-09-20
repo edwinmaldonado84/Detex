@@ -14,5 +14,5 @@ class Charge extends Model
 
     protected $fillable = ['name', 'description'];
     protected $appends = [];
-    protected $hidden = ['deleted_at'];
+    protected $hidden = ['deleted_at', 'pivot'];
 }

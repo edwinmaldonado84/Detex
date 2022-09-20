@@ -15,7 +15,7 @@ class Company extends Authenticatable
 
     protected $fillable = ['name', 'business_name', 'rfc', 'webpage', 'observations', 'group_id'];
     protected $appends = [];
-    protected $hidden = ['deleted_at'];
+    protected $hidden = ['deleted_at', 'pivot'];
 
 
     public function group()
