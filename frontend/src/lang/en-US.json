@@ -54,6 +54,9 @@
         "role": "Role",
         "updated": "Updated",
         "webpage": "Webpage",
-        "email": "Email"
+        "email": "Email",
+        "phones": "Phones",
+        "emails": "Emails",
+        "last_name": "Lastname"
     }
 }

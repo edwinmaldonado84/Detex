@@ -17,7 +17,7 @@ class CompanyRepository extends BaseRepository
     {
 
 
-        $q = Company::leftJoin('groups', 'groups.id', '=', 'group_id')
+        $q = Company::join('groups', 'groups.id', '=', 'group_id')
             ->where('companies.name', 'LIKE', isset($params['search']) ? "%" . $params['search'] . "%" : "%")
             ->orWhere('companies.business_name', 'LIKE', isset($params['search']) ? "%" . $params['search'] . "%" : "%")
             ->orWhere('companies.rfc', 'LIKE', isset($params['search']) ? "%" . $params['search'] . "%" : "%")

@@ -15,4 +15,15 @@ class Contact extends Model
     protected $fillable = ['name', 'last_name', 'birtday', 'observations'];
     protected $appends = [];
     protected $hidden = ['deleted_at'];
+
+
+    public function phones()
+    {
+        return $this->hasMany(Phone::class);
+    }
+
+    public function emails()
+    {
+        return $this->hasMany(Email::class);
+    }
 }

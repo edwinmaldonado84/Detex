@@ -6,6 +6,7 @@ use App\Traits\ApiResponse;
 use App\Exceptions\InvalidException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactRequest;
+use App\Http\Resources\ContactResource;
 use App\Repositories\contactRepository;
 
 class ContactController extends Controller
@@ -22,8 +23,8 @@ class ContactController extends Controller
     {
 
         $list = $this->contactRepository->list($request->all());
-
-        return $this->successResponse($list, 'List', 200);
+        $listResource = new ContactResource($list);
+        return $this->successResponse($listResource, 'List', 200);
     }
 
     public function store(ContactRequest $request)

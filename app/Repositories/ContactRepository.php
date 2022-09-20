@@ -4,6 +4,8 @@ namespace App\Repositories;
 
 use App\Models\Contact;
 use App\Core\BaseRepository;
+use App\Core\Utilities\Helpers;
+use Illuminate\Support\Facades\DB;
 
 class ContactRepository extends BaseRepository
 {
@@ -15,13 +17,28 @@ class ContactRepository extends BaseRepository
     public function list($params)
     {
 
-        return $this->get($params, [], function ($q) use ($params) {
-            $q->ofId($params['id'] ?? '');
 
-            $q->orderBy($params['sortBy'] ?? 'id', $params['sortType'] ?? 'asc');
 
-            return $q;
-        });
+
+        $find = Contact::leftJoin('phones', 'contacts.id', '=', 'phones.contact_id')
+            ->leftJoin('emails', 'contacts.id', '=', 'emails.contact_id')
+            ->where('contacts.name', 'LIKE', isset($params['search']) ? "%" . $params['search'] . "%" : "%")
+            ->where('contacts.last_name', 'LIKE', isset($params['search']) ? "%" . $params['search'] . "%" : "%")
+            ->orWhere('phones.phone', 'LIKE', isset($params['search']) ? "%" . $params['search'] . "%" : "%")
+            ->orWhere('emails.email', 'LIKE', isset($params['search']) ? "%" . $params['search'] . "%" : "%")
+            ->orderBy($params['sortBy'] ?? 'contacts.id',  $params['sortType'] ?? 'asc')
+            ->distinct()
+            ->select("contacts.id");
+
+        $q = Contact::whereIn('contacts.id', $find->pluck('id')->toArray())
+            ->orderBy($params['sortBy'] ?? 'contacts.id',  $params['sortType'] ?? 'asc');
+
+
+        if (Helpers::hasValue($params['per_page']) && ($params['per_page'] == -1)) $params['per_page'] = 999999999999;
+        if (Helpers::hasValue($params['paginate']) && ($params['paginate'] == 'no')) return $q->get();
+        return $q->paginate($params['per_page'] ?? 10);
+
+        return $q;
     }
 
     public function delete(int $id)

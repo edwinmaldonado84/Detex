@@ -2,18 +2,31 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class ContactResource extends JsonResource
+class ContactResource extends ResourceCollection
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
-    public function toArray($request)
+    public function toArray($request): array
     {
-        return parent::toArray($request);
+        return [
+            'data' => $this->collection->map(function ($item) {
+                return [
+                    'id' => $item->id,
+                    'name' => $item->name,
+                    'last_name' => $item->last_name,
+                    'birtday' => $item->birtday,
+                    'observations' => $item->observations,
+                    'phones' => $item->phones,
+                    'emails' => $item->emails,
+                    'created_at' => $item->created_at,
+                    'updated_at' => $item->updated_at,
+                ];
+            }),
+            'total' => $this->total(),
+            'count' => $this->count(),
+            'per_page' => $this->perPage(),
+            'current_page' => $this->currentPage(),
+            'total_pages' => $this->lastPage()
+        ];
     }
 }

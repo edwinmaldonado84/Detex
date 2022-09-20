@@ -55,6 +55,9 @@
         "role": "Role",
         "updated": "Actualización",
         "webpage": "Pagina web",
-        "email": "Correo electrónico"
+        "email": "Correo electrónico",
+        "phones": "Teléfonos",
+        "emails": "Correos electrónicos",
+        "last_name": "Apellido"
     }
 }

@@ -59,6 +59,24 @@
                 </q-input>
             </template>
 
+            <template v-slot:body-cell-phones="props">
+                <q-td :props="props">
+                    <div v-for="item in props.value">
+                        <q-icon name="phone" color="primary" />
+                        {{ item.phone }}
+                    </div>
+                </q-td>
+            </template>
+
+            <template v-slot:body-cell-emails="props">
+                <q-td :props="props">
+                    <div v-for="item in props.value">
+                        <q-icon name="email" color="primary" />
+                        {{ item.email }}
+                    </div>
+                </q-td>
+            </template>
+
             <template v-slot:no-data="{ icon, message, filter }">
                 <div class="tw-w-full row flex-center tw-py-10">
                     <q-icon
@@ -97,6 +115,30 @@ const columns = [
         align: "left",
         field: "name",
         sortable: true,
+    },
+    {
+        name: "last_name",
+        label: "tables.last_name",
+        required: true,
+        align: "left",
+        field: "last_name",
+        sortable: true,
+    },
+    {
+        name: "phones",
+        label: "tables.phones",
+        required: true,
+        align: "left",
+        field: "phones",
+        sortable: false,
+    },
+    {
+        name: "emails",
+        label: "tables.emails",
+        required: true,
+        align: "left",
+        field: "emails",
+        sortable: false,
     },
     {
         name: "created_at",
