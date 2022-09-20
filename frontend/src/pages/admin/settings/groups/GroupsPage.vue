@@ -59,6 +59,15 @@
                 </q-input>
             </template>
 
+            <template v-slot:body-cell-companies="props">
+                <q-td :props="props">
+                    <div v-for="item in props.value">
+                        <q-icon name="business" color="primary" />
+                        {{ item.business_name }}
+                    </div>
+                </q-td>
+            </template>
+
             <template v-slot:no-data="{ icon, message, filter }">
                 <div class="tw-w-full row flex-center tw-py-10">
                     <q-icon
@@ -96,6 +105,14 @@ const columns = [
         required: true,
         align: "left",
         field: "name",
+        sortable: true,
+    },
+    {
+        name: "companies",
+        label: "tables.companies",
+        required: true,
+        align: "left",
+        field: "companies",
         sortable: true,
     },
     {

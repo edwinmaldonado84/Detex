@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Company;
 use App\Traits\GroupTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -15,4 +16,9 @@ class Group extends Model
     protected $fillable = ['name'];
     protected $appends = [];
     protected $hidden = ['deleted_at', 'pivot'];
+
+    public function companies()
+    {
+        return $this->hasMany(Company::class, 'group_id', 'id');
+    }
 }

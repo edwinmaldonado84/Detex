@@ -15,7 +15,7 @@ class GroupRepository extends BaseRepository
     public function list($params)
     {
 
-        return $this->get($params, [], function ($q) use ($params) {
+        return $this->get($params, ['companies'], function ($q) use ($params) {
             $q->ofId($params['id'] ?? '');
             $q->ofSearch($params['search'] ?? '');
 
