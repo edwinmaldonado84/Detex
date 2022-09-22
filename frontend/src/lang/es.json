@@ -12,13 +12,16 @@
         "save": "Guardar",
         "show": "Mostrar"
     },
-    "dashboard": "Dashboard",
     "errors": {
         "invalid_email": "Correo electronico invalido.",
         "min_password": "Deberia contener almenos 8 caracteres.",
         "required": "Requerido.",
         "something_is_wrong": "Algo salio mal!",
         "there_are_not_permissions": "No hay permisos!"
+    },
+    "general": {
+        "edit": "Editar",
+        "new": "Nuevo"
     },
     "home": "Casa",
     "inputs": {
@@ -31,7 +34,6 @@
         "rfc": "RFC",
         "search": "Buscar"
     },
-    "language": "Idioma",
     "pages": {
         "bank": "Banco",
         "charges": "Cargos",
@@ -45,22 +47,22 @@
     },
     "tables": {
         "business_name": "Razón social",
+        "charges": "Cargos",
+        "companies": "Empresas",
         "created": "Creación",
         "description": "Descripción",
+        "email": "Correo electrónico",
+        "emails": "Correos electrónicos",
         "group": "Agrupación",
+        "groups": "Agrupaciones",
+        "last_name": "Apellido",
         "name": "Nombre",
         "observations": "Observaciones",
         "permissions": "Permisos",
+        "phones": "Teléfonos",
         "rfc": "RFC",
         "role": "Role",
         "updated": "Actualización",
-        "webpage": "Pagina web",
-        "email": "Correo electrónico",
-        "phones": "Teléfonos",
-        "emails": "Correos electrónicos",
-        "last_name": "Apellido",
-        "groups": "Agrupaciones",
-        "companies": "Empresas",
-        "charges": "Cargos"
+        "webpage": "Pagina web"
     }
 }

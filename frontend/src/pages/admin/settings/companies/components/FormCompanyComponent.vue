@@ -6,17 +6,15 @@
             >
                 <div
                     class="text-h4 text-white"
-                    v-text="props.datas.length > 0 ? 'Edit' : 'New'"
+                    v-text="
+                        props.datas.length > 0
+                            ? $t('general.edit')
+                            : $t('general.new')
+                    "
                 />
 
                 <q-space />
-                <q-btn
-                    icon="close"
-                    size="lg"
-                    color="white"
-                    flat
-                    v-close-popup
-                />
+                <q-btn outline color="white" icon="close" v-close-popup />
             </q-card-section>
 
             <q-card-section class="q-pa-xl rounded">
@@ -95,18 +93,20 @@
             >
                 <q-btn
                     outline
-                    label="Cancel"
+                    :label="$t('buttons.cancel')"
                     color="negative"
                     v-close-popup
-                    class="btn"
+                    icon="cancel"
+                    class="tw-w-32 text-capitalize"
                 />
                 <q-btn
                     outline
-                    label="Save"
+                    :label="$t('buttons.save')"
                     color="positive"
                     v-close-popup
-                    class="btn"
                     :disable="v$.$invalid"
+                    icon="save"
+                    class="tw-w-32 text-capitalize"
                 />
             </q-card-actions>
         </q-card>
@@ -139,12 +139,3 @@ onMounted(() => {
     });
 });
 </script>
-
-<style lang="sass">
-.container
-    width: "2000px"
-
-.btn
-    width: 150px
-    text-transform: capitalize
-</style>

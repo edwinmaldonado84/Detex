@@ -10,7 +10,7 @@
                     v-text="$t('tables.permissions')"
                 />
                 <q-space />
-                <q-btn outline round color="white" icon="close" v-close-popup />
+                <q-btn outline color="white" icon="close" v-close-popup />
             </q-card-section>
 
             <q-separator />

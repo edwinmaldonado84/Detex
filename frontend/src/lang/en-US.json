@@ -19,7 +19,11 @@
         "something_is_wrong": "Something is wrong!",
         "there_are_not_permissions": "There are not permissions!"
     },
-    "home": "Home",
+    "general": {
+        "edit": "Edit",
+        "new": "New"
+
+    },
     "inputs": {
         "address": "Address",
         "email": "E-mail",
@@ -30,7 +34,6 @@
         "rfc": "RFC",
         "search": "Search"
     },
-    "language": "Language",
     "pages": {
         "bank": "Bank",
         "charges": "Charges",
@@ -44,22 +47,22 @@
     },
     "tables": {
         "business_name": "Business name",
+        "charges": "Charges",
+        "companies": "Companies",
         "created": "Created",
         "description": "Description",
+        "email": "Email",
+        "emails": "Emails",
         "group": "Group",
+        "groups": "Groups",
+        "last_name": "Lastname",
         "name": "Name",
         "observations": "Observations",
         "permissions": "Permissions",
+        "phones": "Phones",
         "rfc": "RFC",
         "role": "Role",
         "updated": "Updated",
-        "webpage": "Webpage",
-        "email": "Email",
-        "phones": "Phones",
-        "emails": "Emails",
-        "last_name": "Lastname",
-        "groups": "Groups",
-        "companies": "Companies",
-        "charges": "Charges"
+        "webpage": "Webpage"
     }
 }

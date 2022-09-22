@@ -37,6 +37,7 @@
                         type="email"
                         :label="$t('inputs.email')"
                         :rules="[$rules.required, $rules.email]"
+                        autogrow
                     >
                         <template v-slot:before>
                             <q-icon name="email" />
@@ -48,6 +49,7 @@
                         type="password"
                         :label="$t('inputs.password')"
                         :rules="[$rules.required, $rules.minPassword]"
+                        autogrow
                     >
                         <template v-slot:before>
                             <q-icon name="lock" />

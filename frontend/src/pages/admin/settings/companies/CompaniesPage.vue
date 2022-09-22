@@ -105,6 +105,14 @@ const columns = [
         sortable: true,
     },
     {
+        name: "companies.name",
+        label: "tables.name",
+        required: true,
+        align: "left",
+        field: "name",
+        sortable: true,
+    },
+    {
         name: "companies.business_name",
         label: "tables.business_name",
         required: true,
@@ -112,6 +120,7 @@ const columns = [
         field: "business_name",
         sortable: true,
     },
+
     {
         name: "companies.rfc",
         label: "tables.rfc",
