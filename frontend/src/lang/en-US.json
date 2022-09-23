@@ -43,7 +43,10 @@
         "groups": "Groups",
         "orders": "Orders",
         "settings": "Settings",
-        "users": "Users"
+        "users": "Users",
+        "quotations": "Quotations",
+        "redirect": "Redirect"
+
     },
     "tables": {
         "business_name": "Business name",

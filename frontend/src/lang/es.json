@@ -43,7 +43,9 @@
         "groups": "Grupos",
         "orders": "Ordenes",
         "settings": "Configuración",
-        "users": "Usuarios"
+        "users": "Usuarios",
+        "quotations": "Cotizaciones",
+        "redirect": "Redireccionar"
     },
     "tables": {
         "business_name": "Razón social",

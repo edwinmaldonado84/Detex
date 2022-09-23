@@ -11,29 +11,3 @@
     border-width: 1px;
 }
 
-[type="text"]:focus,
-[type="email"]:focus,
-[type="url"]:focus,
-[type="password"]:focus,
-[type="number"]:focus,
-[type="date"]:focus,
-[type="datetime-local"]:focus,
-[type="month"]:focus,
-[type="search"]:focus,
-[type="tel"]:focus,
-[type="time"]:focus,
-[type="week"]:focus,
-[multiple]:focus,
-textarea:focus,
-select:focus {
-    outline: 0px solid transparent;
-    outline-offset: 0px;
-    --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
-    --tw-ring-offset-width: 0px;
-    --tw-ring-offset-color: #fff;
-    --tw-ring-color: none;
-    --tw-ring-offset-shadow: none 0 0 0 none none;
-    --tw-ring-shadow: none;
-    box-shadow: none;
-    border-color: none;
-}

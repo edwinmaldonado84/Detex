@@ -2,9 +2,23 @@ import AdminLayout from "@/layouts/AdminLayout.vue";
 
 export default [
     {
-        path: "/redirect/:id",
+        path: "/redirect",
         hidden: true,
-        component: () => import("../../../pages/redirect/RedirectPage.vue"),
+        children: [
+            {
+                path: "/redirect/:pathMatch(.*)*",
+                component: () =>
+                    import("../../../pages/redirect/RedirectPage.vue"),
+                meta: {
+                    title: "pages.redirect",
+                    noCache: true,
+                    layout: AdminLayout,
+                    icon: "refresh",
+                    affix: false,
+                    separator: false,
+                },
+            },
+        ],
     },
     {
         path: "/dashboard",
@@ -14,10 +28,26 @@ export default [
             import("../../../pages/admin/dashboard/DashboardPage.vue"),
         meta: {
             title: "pages.dashboard",
-            noCache: false,
+            noCache: true,
             layout: AdminLayout,
             middleware: "auth",
             icon: "dashboard",
+            affix: true,
+            separator: true,
+        },
+    },
+    {
+        path: "/quotations",
+        name: "QuotationsPage",
+        hidden: false,
+        component: () =>
+            import("../../../pages/admin/quotations/QuotationsPage.vue"),
+        meta: {
+            title: "pages.quotations",
+            noCache: false,
+            layout: AdminLayout,
+            middleware: "auth",
+            icon: "request_quote",
             affix: true,
             separator: true,
         },
@@ -60,7 +90,7 @@ export default [
         component: () => import("../../../pages/admin/bank/BankPage.vue"),
         meta: {
             title: "pages.bank",
-            noCache: false,
+            noCache: true,
             layout: AdminLayout,
             middleware: "auth",
             icon: "account_balance",
@@ -75,7 +105,7 @@ export default [
         component: () => import("../../../pages/admin/users/UsersPage.vue"),
         meta: {
             title: "pages.users",
-            noCache: false,
+            noCache: true,
             layout: AdminLayout,
             middleware: "auth",
             icon: "group",
@@ -103,7 +133,7 @@ export default [
                     ),
                 meta: {
                     title: "pages.groups",
-                    noCache: true,
+                    noCache: false,
                     layout: AdminLayout,
                     middleware: "auth",
                     icon: "groups",
@@ -131,14 +161,14 @@ export default [
             },
             {
                 path: "charges",
-                name: "Charges",
+                name: "ChargesPage",
                 component: () =>
                     import(
                         "../../../pages/admin/settings/charges/ChargesPage.vue"
                     ),
                 meta: {
                     title: "pages.charges",
-                    noCache: true,
+                    noCache: false,
                     layout: AdminLayout,
                     middleware: "auth",
                     icon: "work",

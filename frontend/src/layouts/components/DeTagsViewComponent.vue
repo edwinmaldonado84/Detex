@@ -16,7 +16,7 @@
             :to="{ path: tag.path, query: tag.query, fullPath: tag.fullPath }"
             :removable="i > 0"
             @remove="closeSelectedTag(tag)"
-            @contextmenu.prevent.native="openMenu(tag, $event)"
+            @contextmenu.prevent="openMenu(tag, $event)"
             :color="isActive(tag) ? 'primary' : ''"
             :text-color="isActive(tag) ? 'white' : ''"
             class="q-bg--dark-red"
@@ -78,6 +78,12 @@ const routes = computed(() => {
 watch(currentlyRoute, async (value) => {
     addTags();
     moveToCurrentTag();
+});
+
+watch(visible, async (value) => {
+    if (!value) {
+        selectedTag.value = null;
+    }
 });
 
 onMounted(async () => {
@@ -182,10 +188,9 @@ const isAffix = (tag) => {
 const refreshSelectedTag = async (view) => {
     store.dispatch("tagsView/delCachedView", view).then(async () => {
         const { path } = view;
-        await nextTick(() => {
-            router.replace({
-                path: "/redirect" + path,
-            });
+        await nextTick();
+        router.replace({
+            path: "/redirect" + path,
         });
     });
 };

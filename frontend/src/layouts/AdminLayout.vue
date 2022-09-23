@@ -63,7 +63,8 @@ const route = useRoute();
 const miniState = ref(false);
 
 const cachedViews = computed(() => {
-    return store.getters.cachedViews;
+    // return store.getters.cachedViews;
+    return Object.values(store.getters.cachedViews);
 });
 
 const key = computed(() => {

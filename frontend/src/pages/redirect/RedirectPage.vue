@@ -11,8 +11,9 @@ import { ref } from "vue";
 
 const router = useRouter();
 const { params } = useRoute();
-const { id } = params;
 const visible = ref(true);
 
-router.replace({ path: "/" + id });
+setTimeout(() => {
+    router.replace({ path: "/" + params.pathMatch.join("/") });
+}, 200);
 </script>
