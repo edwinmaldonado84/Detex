@@ -17,7 +17,8 @@
         "min_password": "Deberia contener almenos 8 caracteres.",
         "required": "Requerido.",
         "something_is_wrong": "Algo salio mal!",
-        "there_are_not_permissions": "No hay permisos!"
+        "there_are_not_permissions": "No hay permisos!",
+        "no_results": "No hay resultados"
     },
     "general": {
         "edit": "Editar",
@@ -32,7 +33,10 @@
         "password": "Contraseña",
         "phone": "Teléfono",
         "rfc": "RFC",
-        "search": "Buscar"
+        "search": "Buscar",
+        "group": "Grupo",
+        "company": "Empresa",
+        "contact": "Contacto"
     },
     "pages": {
         "bank": "Banco",
@@ -42,10 +46,14 @@
         "dashboard": "Dashboard",
         "groups": "Grupos",
         "orders": "Ordenes",
-        "settings": "Configuración",
-        "users": "Usuarios",
         "quotations": "Cotizaciones",
-        "redirect": "Redireccionar"
+        "redirect": "Redireccionar",
+        "settings": "Configuración",
+        "users": "Usuarios"
+    },
+    "stepers": {
+        "general_data": "Datos generales",
+        "items":"Artículos"
     },
     "tables": {
         "business_name": "Razón social",

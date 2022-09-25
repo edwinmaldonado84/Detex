@@ -17,12 +17,12 @@
         "min_password": "It should contain at least 8 characters",
         "required": "Required.",
         "something_is_wrong": "Something is wrong!",
-        "there_are_not_permissions": "There are not permissions!"
+        "there_are_not_permissions": "There are not permissions!",
+        "no_results": "No results"
     },
     "general": {
         "edit": "Edit",
         "new": "New"
-
     },
     "inputs": {
         "address": "Address",
@@ -32,7 +32,10 @@
         "password": "Password",
         "phone": "Phone",
         "rfc": "RFC",
-        "search": "Search"
+        "search": "Search",
+        "group": "Group",
+        "company": "Company",
+        "contact": "Contact"
     },
     "pages": {
         "bank": "Bank",
@@ -42,11 +45,14 @@
         "dashboard": "Dashboard",
         "groups": "Groups",
         "orders": "Orders",
-        "settings": "Settings",
-        "users": "Users",
         "quotations": "Quotations",
-        "redirect": "Redirect"
-
+        "redirect": "Redirect",
+        "settings": "Settings",
+        "users": "Users"
+    },
+    "stepers": {
+        "general_data": "General datas",
+        "items":"Items"
     },
     "tables": {
         "business_name": "Business name",

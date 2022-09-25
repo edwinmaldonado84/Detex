@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Contact;
 use App\Core\BaseRepository;
 use App\Core\Utilities\Helpers;
-use Illuminate\Support\Facades\DB;
+use App\Http\Resources\ContactResource;
 
 class ContactRepository extends BaseRepository
 {
@@ -16,29 +16,29 @@ class ContactRepository extends BaseRepository
 
     public function list($params)
     {
-
-
-
-
-        $find = Contact::leftJoin('phones', 'contacts.id', '=', 'phones.contact_id')
+        $q = Contact::leftJoin('phones', 'contacts.id', '=', 'phones.contact_id')
             ->leftJoin('emails', 'contacts.id', '=', 'emails.contact_id')
-            ->where('contacts.name', 'LIKE', isset($params['search']) ? "%" . $params['search'] . "%" : "%")
-            ->where('contacts.last_name', 'LIKE', isset($params['search']) ? "%" . $params['search'] . "%" : "%")
-            ->orWhere('phones.phone', 'LIKE', isset($params['search']) ? "%" . $params['search'] . "%" : "%")
-            ->orWhere('emails.email', 'LIKE', isset($params['search']) ? "%" . $params['search'] . "%" : "%")
-            ->orderBy($params['sortBy'] ?? 'contacts.id',  $params['sortType'] ?? 'asc')
-            ->distinct()
-            ->select("contacts.id");
+            ->leftJoin('group_company_charge_contact', 'contacts.id', '=', 'group_company_charge_contact.contact_id');
 
-        $q = Contact::whereIn('contacts.id', $find->pluck('id')->toArray())
+        $q->ofId($params['id'] ?? '');
+        $q->ofSearch($params['search'] ?? '');
+        $q->ofCompanyId($params['companyId'] ?? '');
+
+        $q->distinct("contacts.id");
+        $q->select("contacts.id");
+
+
+        $q = Contact::whereIn('contacts.id', $q->pluck('id')->toArray())
             ->orderBy($params['sortBy'] ?? 'contacts.id',  $params['sortType'] ?? 'asc');
 
-
+        // if per page is -1, we don't need to paginate at all, but we still return the paginated
+        // data structure to our response. Let's just put the biggest number we can imagine.
         if (Helpers::hasValue($params['per_page']) && ($params['per_page'] == -1)) $params['per_page'] = 999999999999;
-        if (Helpers::hasValue($params['paginate']) && ($params['paginate'] == 'no')) return $q->get();
-        return $q->paginate($params['per_page'] ?? 10);
 
-        return $q;
+        // if don't want any pagination
+        if (Helpers::hasValue($params['paginate']) && ($params['paginate'] == 'no')) return $q->get();
+
+        return new ContactResource($q->paginate($params['per_page'] ?? 10));
     }
 
     public function delete(int $id)

@@ -6,7 +6,6 @@ use App\Traits\ApiResponse;
 use App\Exceptions\InvalidException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CompanyRequest;
-use App\Http\Resources\CompanyResource;
 use App\Repositories\CompanyRepository;
 
 class CompanyController extends Controller
@@ -24,9 +23,7 @@ class CompanyController extends Controller
 
         $list = $this->companyRepository->list($request->all());
 
-        $listResorce = new CompanyResource($list);
-
-        return $this->successResponse($listResorce, 'List', 200);
+        return $this->successResponse($list, 'List', 200);
     }
 
     public function store(CompanyRequest $request)
