@@ -1,12 +1,15 @@
 <template>
     <q-select
         v-model="model"
-        :options="items"
+        :options="options"
         :label="$t('inputs.company')"
         option-label="name"
         option-value="id"
         :loading="loading"
         :disable="props.dependent && props.groupId == 0"
+        @filter="filterFn"
+        input-debounce="100"
+        use-input
     >
         <template v-slot:no-option>
             <q-item>
@@ -37,6 +40,7 @@ const props = defineProps({
 const model = ref(null);
 const loading = ref(false);
 const items = ref(null);
+const options = ref();
 
 onMounted(() => {
     load();
@@ -83,5 +87,14 @@ const load = async () => {
     items.value = data.data;
 
     loading.value = false;
+};
+
+const filterFn = (val, update, abort) => {
+    update(() => {
+        const needle = val.toLowerCase();
+        options.value = items.value.filter((item) => {
+            return item.name.toLowerCase().includes(needle);
+        });
+    });
 };
 </script>

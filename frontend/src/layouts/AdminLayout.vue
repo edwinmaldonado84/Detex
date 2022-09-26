@@ -5,11 +5,11 @@
                 <q-btn dense flat round icon="menu" @click="toggleDrawer" />
 
                 <q-toolbar-title>
-                    <q-avatar>
+                   <!--  <q-avatar>
                         <img
                             src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg"
                         />
-                    </q-avatar>
+                    </q-avatar> -->
                     Detex
                 </q-toolbar-title>
                 <SearchRoutesComponent />
