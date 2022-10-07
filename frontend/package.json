@@ -16,6 +16,7 @@
     "axios": "^0.27.2",
     "chart.js": "^3.9.1",
     "flowbite": "^1.5.3",
+    "moment": "^2.29.4",
     "nprogress": "^0.2.0",
     "quasar": "^2.7.7",
     "unplugin-vue-components": "^0.22.4",

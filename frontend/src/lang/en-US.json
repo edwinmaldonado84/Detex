@@ -35,7 +35,11 @@
         "search": "Search",
         "group": "Group",
         "company": "Company",
-        "contact": "Contact"
+        "contact": "Contact",
+        "location": "Location",
+        "delivery_time": "Delivery time",
+        "payment": "Payment",
+        "observations": "Observations"
     },
     "pages": {
         "bank": "Bank",

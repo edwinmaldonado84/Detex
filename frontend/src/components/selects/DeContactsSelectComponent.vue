@@ -11,6 +11,9 @@
         input-debounce="100"
         use-input
     >
+        <template v-slot:before>
+            <q-icon name="contact_phone" />
+        </template>
         <template v-slot:no-option>
             <q-item>
                 <q-item-section

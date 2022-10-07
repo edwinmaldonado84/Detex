@@ -11,6 +11,7 @@
             <q-card-section>
                 <q-stepper
                     v-model="step"
+                    header-nav
                     ref="stepper"
                     color="primary"
                     animated

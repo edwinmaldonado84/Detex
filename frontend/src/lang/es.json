@@ -36,7 +36,11 @@
         "search": "Buscar",
         "group": "Grupo",
         "company": "Empresa",
-        "contact": "Contacto"
+        "contact": "Contacto",
+        "location": "Origen",
+        "delivery_time": "Tiempo de entrega",
+        "payment": "Metodo de pago",
+        "observations": "Observaciones"
     },
     "pages": {
         "bank": "Banco",
